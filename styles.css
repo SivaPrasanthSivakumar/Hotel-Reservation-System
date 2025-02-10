@@ -18,26 +18,45 @@ p span {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Adjust as needed */
+  height: 100vh; 
 }
 
 .border-button {
-  border: 2px solid #000; /* Adjust the color and width as needed */
-}
+  border: 2px solid #000; 
 
 body {
+  background-color: #f8f9fa; 
   font-family: "Arial", sans-serif;
-  padding-top: 70px; /* Adjust based on the height of your navbar */
+  padding-top: 70px; 
+  color: #333; 
 }
-
+.content-box {
+  background-color: #ffffff;
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
 .hero {
   background-size: cover;
   background-position: center;
-  color: #000000;
+  color: #ffffff; 
+  background-image: url("hero.jpg"); 
+  padding: 100px 0; 
+}
+
+.hero h1 {
+  font-size: 3rem; 
+}
+
+.hero p {
+  font-size: 1.25rem; 
 }
 
 .navbar {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #343a40; 
 }
 
 .nav-link {
@@ -45,7 +64,7 @@ body {
 }
 
 .nav-link:hover {
-  color: #f8f9fa !important;
+  color: #f39c12 !important; 
 }
 
 footer {
@@ -53,4 +72,15 @@ footer {
   color: #ffffff;
   text-align: center;
   padding: 20px 0;
+  margin-top: 40px; 
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
 }
