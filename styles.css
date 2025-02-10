@@ -7,3 +7,50 @@ p span {
   height: 200px; /* Adjust the height as needed */
   object-fit: cover; /* Ensures the image covers the area without distortion */
 }
+.navbar-nav .nav-link:hover {
+  color: #f39c12 !important;
+}
+.bg-primary {
+  background-color: white !important;
+}
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Adjust as needed */
+}
+
+.border-button {
+  border: 2px solid #000; /* Adjust the color and width as needed */
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  padding-top: 70px; /* Adjust based on the height of your navbar */
+}
+
+.hero {
+  background-size: cover;
+  background-position: center;
+  color: #000000;
+}
+
+.navbar {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+  color: #ffffff !important;
+}
+
+.nav-link:hover {
+  color: #f8f9fa !important;
+}
+
+footer {
+  background-color: #343a40;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px 0;
+}
