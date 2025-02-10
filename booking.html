@@ -13,7 +13,6 @@
   </head>
 
   <body>
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="index.html"
         >Hotel Siva Prasanth Sivakumar</a
@@ -46,7 +45,73 @@
     </nav>
 
     <div class="container mt-5">
-      <h1 class = "text-center"> Make a Reservation</h1>
-      
+      <h1 class="text-center">Make a Reservation</h1>
+      <form action="" method="POST">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="checkin">Check-in Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="checkin"
+              name="checkin"
+              required
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label for="checkout">Check-out Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="checkout"
+              name="checkout"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="rooms">Number of Rooms</label>
+            <input
+              type="number"
+              class="form-control"
+              id="rooms"
+              name="rooms"
+              min="1"
+              required
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label for="adults">Number of Adults</label>
+            <input
+              type="number"
+              class="form-control"
+              id="adults"
+              name="adults"
+              min="1"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="children">Number of Children</label>
+            <input
+              type="number"
+              class="form-control"
+              id="children"
+              name="children"
+              min="0"
+            />
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">
+          Check Availability
+        </button>
+      </form>
+    </div>
   </body>
 </html>
