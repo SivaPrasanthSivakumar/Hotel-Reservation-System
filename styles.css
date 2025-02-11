@@ -46,9 +46,31 @@ body.home {
   padding-top: 7vh;
   color: #333;
 }
-body.bookung {
+
+body.booking {
   background-color: #488adc;
   background-image: url("booking.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Arial", sans-serif;
+  padding-top: 7vh;
+  color: #333;
+}
+
+body.service {
+  background-color: #488adc;
+  background-image: url("service_back_img.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Arial", sans-serif;
+  padding-top: 7vh;
+  color: #333;
+}
+body.contact {
+  background-color: #488adc;
+  background-image: url("contact.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -60,16 +82,15 @@ body.bookung {
   background-color: #ffffff;
   padding: 3vw;
   margin: auto;
-  max-width: 80%;
+  max-width: 50%;
   box-shadow: 0 0.8vw 1.6vw rgba(0, 0, 0, 0.2);
-  border-radius: 0.8vw;
+  border-radius: 3vw;
 }
 
 .hero {
   background-size: cover;
   background-position: center;
   color: #000000;
-  background-image: url("hero.jpg");
   padding: 10vh 0;
 }
 
