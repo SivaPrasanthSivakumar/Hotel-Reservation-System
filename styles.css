@@ -36,13 +36,26 @@ p span {
   color: #000000;
 }
 
-body {
+body.home {
   background-color: #488adc;
+  background-image: url("home img.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: "Arial", sans-serif;
   padding-top: 7vh;
   color: #333;
 }
-
+body.bookung {
+  background-color: #488adc;
+  background-image: url("booking.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Arial", sans-serif;
+  padding-top: 7vh;
+  color: #333;
+}
 .content-box {
   background-color: #ffffff;
   padding: 3vw;
