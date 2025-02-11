@@ -128,6 +128,22 @@ footer {
   border-color: #004085;
 }
 
+@media (max-width: 992px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero p {
+    font-size: 1.125rem;
+  }
+  .content-box {
+    padding: 2.5vw;
+    margin: 2vw auto;
+  }
+  .service-img {
+    height: 18vh;
+  }
+}
+
 @media (max-width: 768px) {
   .navbar-nav {
     text-align: center;
@@ -140,13 +156,10 @@ footer {
   }
   .content-box {
     padding: 2vw;
+    margin: 1vw auto;
   }
   .service-img {
     height: 15vh;
-  }
-  .content-box {
-    padding: 2vw;
-    margin: 1vw auto;
   }
 }
 
@@ -163,6 +176,15 @@ footer {
   .content-box {
     padding: 1vw;
     margin: 0.5vw auto;
+  }
+  .navbar {
+    padding: 1vw;
+  }
+  .navbar-nav .nav-link {
+    padding: 0.5vw;
+  }
+  footer {
+    padding: 1vh 0;
   }
 }
 
