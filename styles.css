@@ -63,7 +63,7 @@ h3 {
 
 .border-button:hover {
   background-color: #5b9fff92;
-  color: #000000;
+  color: #ffffff; /* Changed from #000000 to #ffffff for better contrast */
 }
 
 body.home {
@@ -263,5 +263,6 @@ footer {
 
 .card:hover {
   transform: scale(1.05);
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 1.5vw 1.5vw rgba(0, 0, 0, 0.2); /* Added box-shadow for better visual effect */
 }
