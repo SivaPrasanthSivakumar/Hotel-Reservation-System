@@ -1,7 +1,8 @@
 USE hotel_db;
-CREATE USER 'customer_user'@'localhost' IDENTIFIED BY 'passwordCUSto#33';
-GRANT SELECT, INSERT,UPDATE ON hotel_db.reservations TO 'customer_user'@'localhost';
-GRANT SELECT ON hotel_db.rooms TO 'customer_user'@'localhost';
+
+CREATE USER 'customer_user'@'localhost' IDENTIFIED BY 'pasreservationsswordCUSto#33';
+GRANT SELECT, INSERT,update ON hotel_db.reservations TO 'customer_user'@'localhost';
+GRANT SELECT,update ON hotel_db.rooms TO 'customer_user'@'localhost';
 
 
 CREATE USER 'admin_user'@'localhost' IDENTIFIED BY 'passwordADM@2348';
