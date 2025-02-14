@@ -75,6 +75,7 @@ body.home {
   font-family: "Arial", sans-serif;
   padding-top: 7vh;
   color: #333;
+  transition: background-color 0.5s ease, background-image 0.5s ease;
 }
 
 body.booking {
@@ -86,6 +87,7 @@ body.booking {
   font-family: "Arial", sans-serif;
   padding-top: 7vh;
   color: #333;
+  transition: background-color 0.5s ease, background-image 0.5s ease;
 }
 
 body.service {
@@ -97,6 +99,7 @@ body.service {
   font-family: "Arial", sans-serif;
   padding-top: 7vh;
   color: #333;
+  transition: background-color 0.5s ease, background-image 0.5s ease;
 }
 body.contact {
   background-color: #488adc;
@@ -107,6 +110,7 @@ body.contact {
   font-family: "Arial", sans-serif;
   padding-top: 7vh;
   color: #333;
+  transition: background-color 0.5s ease, background-image 0.5s ease;
 }
 .content-box {
   background-color: #ffffff;
@@ -114,8 +118,9 @@ body.contact {
   margin: auto;
   max-width: 50%;
   box-shadow: 0 0.8vw 1.6vw rgba(0, 0, 0, 0.2);
-  border-radius: 3vw;
+  border-radius: 2vw;
   box-shadow: 0 1vw 1vw rgb(0, 0, 0);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .hero {
@@ -152,7 +157,7 @@ footer {
 .btn-primary {
   background-color: #007bff;
   border-color: #007bff;
-  animation: bounce 1s infinite;
+  animation: bounce 4s infinite;
 }
 
 .btn-primary:hover {
