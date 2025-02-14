@@ -42,6 +42,7 @@ h3 {
 .navbar {
   box-shadow: 0 0.5vw 0.5vw rgb(0, 244, 89);
   background-color: #e8f900;
+  margin-bottom: 20px;
 }
 .bg-primary {
   background-color: rgb(255, 255, 255) !important;
@@ -101,9 +102,9 @@ body.service {
   color: #333;
   transition: background-color 0.5s ease, background-image 0.5s ease;
 }
-body.contact {
-  background-color: #488adc;
-  background-image: url("contact.jpg");
+body.attractions {
+  background-color: #f0f0f0;
+  background-image: url("attractions.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -113,13 +114,12 @@ body.contact {
   transition: background-color 0.5s ease, background-image 0.5s ease;
 }
 .content-box {
-  background-color: #ffffff;
-  padding: 3vw;
+  background-color: #fff;
+  padding: 20px;
   margin: auto;
   max-width: 50%;
-  box-shadow: 0 0.8vw 1.6vw rgba(0, 0, 0, 0.2);
-  border-radius: 2vw;
-  box-shadow: 0 1vw 1vw rgb(0, 0, 0);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
@@ -265,4 +265,16 @@ footer {
   transform: scale(1.05);
   transition: transform 0.3s, box-shadow 0.3s;
   box-shadow: 0 1.5vw 1.5vw rgba(0, 0, 0, 0.2); /* Added box-shadow for better visual effect */
+}
+
+.attractions-list .attraction-item {
+  margin-bottom: 20px;
+}
+
+.attractions-list .attraction-item h3 {
+  color: #333;
+}
+
+.attractions-list .attraction-item p {
+  color: #666;
 }

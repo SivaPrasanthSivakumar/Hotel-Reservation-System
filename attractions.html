@@ -8,10 +8,32 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      .attractions-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+      .attraction-item {
+        flex: 1 1 30vw;
+        margin: 2vw;
+        text-align: center;
+      }
+      .attraction-item img {
+        width: 100%;
+        height: auto;
+        max-height: 20vh;
+        object-fit: cover;
+        border-radius: 1vw;
+      }
+      .attraction-item p {
+        margin-top: 1vh;
+      }
+    </style>
 
-    <title>Contact Page</title>
+    <title>Attractions Page</title>
   </head>
-  <body class="contact">
+  <body class="attractions">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" href="index.html"
         >Hotel Siva Prasanth Sivakumar</a
@@ -37,7 +59,7 @@
             <a class="nav-link" href="services.html">Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
+            <a class="nav-link" href="attractions.html">Attractions</a>
           </li>
         </ul>
       </div>
@@ -49,46 +71,31 @@
 
     <div class="content-box">
       <div class="container mt-5">
-        <h1 class="text-center">Contact Us</h1>
-        <form action="" method="POST">
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              name="name"
-              required
-            />
+        <h1 class="text-center">Local Attractions</h1>
+        <div class="attractions-list">
+          <div class="attraction-item">
+            <img src="Attraction1.jpg" alt="Attraction 1" class="img-fluid" />
+            <p>
+              Have fun at the beach located next to our hotel; it's a great
+              experience!
+            </p>
           </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              name="email"
-              required
-            />
+          <div class="attraction-item">
+            <img src="attraction2.jpg" alt="Attraction 2" class="img-fluid" />
+            <p>
+              Have fun exploring the recently recovered ancient ruins. Discover
+              ancient mysteries and secrets!
+            </p>
           </div>
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" class="form-control" id="phone" name="phone" />
+          <div class="attraction-item">
+            <img src="attraction3.jpg" alt="Attraction 3" class="img-fluid" />
+            <p>
+              Have a fun experience in the aquarium with the family, and gaze at
+              the extraordinary life beneath the ocean.
+            </p>
           </div>
-          <div class="form-group">
-            <label for="message">Your Message</label>
-            <textarea
-              class="form-control"
-              id="message"
-              name="message"
-              rows="5"
-              required
-            ></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-block">
-            Submit
-          </button>
-        </form>
+          <!-- Add more attractions as needed -->
+        </div>
       </div>
     </div>
     <script
