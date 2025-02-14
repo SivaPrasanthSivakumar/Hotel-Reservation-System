@@ -3,9 +3,10 @@ p span {
   display: block;
 }
 h1 {
-  color: #000000;
+  color: #333;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   animation: pop-up 0.5s ease-in-out;
+  font-family: "Helvetica Neue", sans-serif;
 }
 
 @keyframes pop-up {
@@ -20,15 +21,17 @@ h1 {
 }
 
 h2 {
-  color: #000000;
+  color: #444;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   animation: slide-in 0.5s ease-in-out;
+  font-family: "Helvetica Neue", sans-serif;
 }
 
 h3 {
-  color: #000000;
+  color: #555;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   animation: fade-in 0.5s ease-in-out;
+  font-family: "Helvetica Neue", sans-serif;
 }
 
 .service-img {
@@ -64,63 +67,64 @@ h3 {
 
 .border-button:hover {
   background-color: #5b9fff92;
-  color: #ffffff; /* Changed from #000000 to #ffffff for better contrast */
+  color: #ffffff;
 }
 
 body.home {
   background-color: #488adc;
-  background-image: url("home img.jpg");
+  background-image: url("homeimg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: "Arial", sans-serif;
   padding-top: 7vh;
   color: #333;
-  transition: background-color 0.5s ease, background-image 0.5s ease;
+  line-height: 1.6;
 }
 
 body.booking {
   background-color: #488adc;
-  background-image: url("booking.jpg");
+  background-image: url("bookingimg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: "Arial", sans-serif;
   padding-top: 7vh;
   color: #333;
-  transition: background-color 0.5s ease, background-image 0.5s ease;
+  line-height: 1.6;
 }
 
 body.service {
-  background-color: #488adc;
-  background-image: url("service_back_img.jpg");
+  background-color: #292f36;
+  background-image: url("serviceimg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: "Arial", sans-serif;
   padding-top: 7vh;
-  color: #333;
-  transition: background-color 0.5s ease, background-image 0.5s ease;
+  color: #000000;
+  line-height: 1.6;
 }
 body.attractions {
   background-color: #f0f0f0;
-  background-image: url("attractions.jpg");
+  background-image: url("attractionsimg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: "Arial", sans-serif;
   padding-top: 7vh;
   color: #333;
-  transition: background-color 0.5s ease, background-image 0.5s ease;
+  line-height: 1.6;
 }
 .content-box {
   background-color: #fff;
-  padding: 20px;
+  padding: 60px 0;
   margin: auto;
   max-width: 50%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+  padding-top: 10vh;
 }
 
 .hero {
@@ -264,7 +268,8 @@ footer {
 .card:hover {
   transform: scale(1.05);
   transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 1.5vw 1.5vw rgba(0, 0, 0, 0.2); /* Added box-shadow for better visual effect */
+  box-shadow: 0 1.5vw 1.5vw rgba(0, 0, 0, 0.2);
+  background-color: #f8f9fa;
 }
 
 .attractions-list .attraction-item {
@@ -277,4 +282,62 @@ footer {
 
 .attractions-list .attraction-item p {
   color: #666;
+}
+
+.attractions-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 2vw;
+}
+.attraction-item {
+  flex: 1 1 30vw;
+  margin: 2vw;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 1vw;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.attraction-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.attraction-item img {
+  width: 100%;
+  height: auto;
+  max-height: 20vh;
+  object-fit: cover;
+}
+.attraction-item p {
+  margin-top: 1vh;
+  padding: 1vh;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+}
+
+.card-img-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.text-center {
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #343a40;
+  font-family: "Helvetica Neue", sans-serif;
 }
