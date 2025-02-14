@@ -62,7 +62,7 @@ h3 {
 .border-button {
   border: 0.2vw solid #000;
   transition: background-color 0.3s, color 0.3s;
-  box-shadow: 0 0.5vw 0.5vw rgb(0, 0, 0);
+  box-shadow: 0 0.5vw 0.5vw rgb(255, 255, 255);
 }
 
 .border-button:hover {
@@ -106,32 +106,34 @@ body.service {
   line-height: 1.6;
 }
 body.attractions {
-  background-color: #f0f0f0;
+  background-color: #ffffff;
   background-image: url("attractionsimg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: "Arial", sans-serif;
   padding-top: 7vh;
-  color: #333;
+  color: #000000;
   line-height: 1.6;
 }
 .content-box {
-  background-color: #fff;
+  background-color: #ffffffe2;
   padding: 60px 0;
   margin: auto;
   max-width: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.429);
   border-radius: 5px;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   padding-top: 10vh;
+  box-shadow: 0 0.8vw 0.8vw rgb(0, 0, 0);
 }
 
 .hero {
   background-size: cover;
   background-position: center;
-  color: #000000;
+  color: #ffffff;
   padding: 10vh 0;
+  box-shadow: #000 0 0 10px;
 }
 
 .hero h1 {
