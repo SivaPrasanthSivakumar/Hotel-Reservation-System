@@ -97,7 +97,7 @@ try {
             ":num_rooms" => $numberOfRooms,
             ":num_adults" => $numberOfAdults,
             ":num_children" => $numberOfChildren,
-            ":room_number" => substr(implode(", ", $availableRooms), 0, 10), // Limit room_number to 10 characters
+            ":room_number" => substr(implode(", ", $availableRooms), 0, 10), 
             ":total_cost" => $totalCost,
             ":confirmation_number" => $confirmationNumber,
             ":guest_name" => $guestName,
@@ -110,7 +110,6 @@ try {
             $stmt->execute([':room_number' => $roomNumber]);
         }
 
-        // Return booking details to the guest
         // Return booking details to the guest
         echo json_encode([
             "booking" => [
