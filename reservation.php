@@ -2,121 +2,121 @@
 session_start();
 header('Content-Type: application/json');
 
-// Database connection using PDO
 $dsn = "mysql:host=localhost;dbname=hotel_db;charset=utf8mb4";
-$username = "customer_user"; // Change to a user with appropriate permissions
-$password = "passwordCUSto#33"; // Change to the corresponding password
+$username = "customer_user"; 
+$password = "passwordCUSto#33"; 
 
 try {
-    $pdo = new PDO($dsn, $username, $password, [
+    $pdo = new PDO($dsn, $dbUsername, $dbPassword, [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ]);
 
-    // Process form submission
+    // Process form
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Get user inputs
-        $check_in = $_POST["check_in"] ?? '';
-        $check_out = $_POST["check_out"] ?? '';
-        $num_rooms = (int)($_POST["num_rooms"] ?? 0);
-        $num_adults = (int)($_POST["num_adults"] ?? 0);
-        $num_children = (int)($_POST["num_children"] ?? 0);
-        $guest_name = trim($_POST["guest_name"] ?? '');
-        $guest_phone = trim($_POST["guest_phone"] ?? '');
+        $checkInDate = $_POST["check_in"] ?? '';
+        $checkOutDate = $_POST["check_out"] ?? '';
+        $numberOfRooms = (int)($_POST["num_rooms"] ?? 0);
+        $numberOfAdults = (int)($_POST["num_adults"] ?? 0);
+        $numberOfChildren = (int)($_POST["num_children"] ?? 0);
+        $guestName = trim($_POST["guest_name"] ?? '');
+        $guestPhone = trim($_POST["guest_phone"] ?? '');
 
-        // Ensure check-in date is today or later
+        // check-in date has to be today or later 
         if (strtotime($check_in) < strtotime(date("Y-m-d"))) {
             echo json_encode(["error" => "Check-in date cannot be in the past."]);
             exit;
         }
 
-        // Validate dates
+        // check out date must be after check-in date
         if (strtotime($check_out) <= strtotime($check_in)) {
             echo json_encode(["error" => "Check-out date must be later than check-in date."]);
             exit;
         }
 
-        // Ensure numbers are positive
+        // number of rooms and adults must be at least 1
         if ($num_rooms <= 0 || $num_adults <= 0) {
             echo json_encode(["error" => "Number of rooms and adults must be at least 1."]);
             exit;
         }
 
         // Check room availability
-        $stmt = $pdo->query("SELECT room_number FROM rooms WHERE status = 'available' LIMIT $num_rooms");
-        $rooms = $stmt->fetchAll(PDO::FETCH_COLUMN);
-        if (count($rooms) < $num_rooms) {
+        $stmt = $pdo->query("SELECT room_number FROM rooms WHERE status = 'available' LIMIT $numberOfRooms");
+        $availableRooms = $stmt->fetchAll(PDO::FETCH_COLUMN);
+        if (count($availableRooms) < $numberOfRooms) {
             echo json_encode(["error" => "Not enough available rooms."]);
             exit;
         }
 
-        // Room availability check
+        // Room availability for the selected dates
         foreach ($rooms as $room) {
             $stmt = $pdo->prepare("SELECT * FROM reservations WHERE room_number = :room_number AND 
                                    ((:check_in BETWEEN check_in_date AND check_out_date) OR 
                                     (:check_out BETWEEN check_in_date AND check_out_date))");
-            $stmt->execute([':room_number' => $room, ':check_in' => $check_in, ':check_out' => $check_out]);
+            $stmt->execute([':room_number' => $roomNumber, ':check_in' => $checkInDate, ':check_out' => $checkOutDate]);
             if ($stmt->rowCount() > 0) {
-                echo json_encode(["error" => "Room $room is already reserved for the selected dates."]);
+                echo json_encode(["error" => "Room $roomNumber is already reserved for the selected dates."]);
                 exit;
             }
         }
 
-        // If checking availability, return success
+        // checking availability
         if (isset($_POST['check_availability'])) {
             echo json_encode(["available" => true]);
             exit;
         }
 
-        // Calculate total nights
-        $num_nights = (strtotime($check_out) - strtotime($check_in)) / (60 * 60 * 24);
+        // total nights
+        $numberOfNights = (strtotime($checkOutDate) - strtotime($checkInDate)) / (60 * 60 * 24);
 
         // Base price per night per room
-        $price_per_night = 100.00;
+        $pricePerNight = 100.00;
         
+        // Calculate child discount 5% for each child
         $child_discount = ($num_children * $price_per_night * 0.05);
 
-        // Calculate total cost
-        $total_cost = ($num_rooms * $price_per_night * $num_nights);
-        $final_cost = $total_cost - $child_discount;
-        if ($final_cost < 0) {
-            $final_cost = 0;
+        //total cost
+        $totalCost = ($numberOfRooms * $pricePerNight * $numberOfNights);
+        $finalCost = $totalCost - $childDiscount;
+        if ($finalCost < 0) {
+            $finalCost = 0;
         }
 
         // Generate a unique confirmation number
-        $confirmation_number = uniqid("CONF-");
+        $confirmationNumber = uniqid("CONF-");
 
-        // Insert into the database
+        // Insert to the database
         $sql = "INSERT INTO reservations 
                 (check_in_date, check_out_date, number_of_rooms, number_of_adults, number_of_children, room_number, total_cost, confirmation_number, guest_name, guest_phone) 
                 VALUES 
                 (:check_in, :check_out, :num_rooms, :num_adults, :num_children, :room_number, :total_cost, :confirmation_number, :guest_name, :guest_phone)";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            ":check_in" => $check_in,
-            ":check_out" => $check_out,
-            ":num_rooms" => $num_rooms,
-            ":num_adults" => $num_adults,
-            ":num_children" => $num_children,
-            ":room_number" => substr(implode(", ", $rooms), 0, 10), // Limit room_number to 10 characters
-            ":total_cost" => $total_cost,
-            ":confirmation_number" => $confirmation_number,
-            ":guest_name" => $guest_name,
-            ":guest_phone" => $guest_phone
+            ":check_in" => $checkInDate,
+            ":check_out" => $checkOutDate,
+            ":num_rooms" => $numberOfRooms,
+            ":num_adults" => $numberOfAdults,
+            ":num_children" => $numberOfChildren,
+            ":room_number" => substr(implode(", ", $availableRooms), 0, 10), 
+            ":total_cost" => $totalCost,
+            ":confirmation_number" => $confirmationNumber,
+            ":guest_name" => $guestName,
+            ":guest_phone" => $guestPhone
         ]);
 
         // Update room status to reserved
-        foreach ($rooms as $room) {
+        foreach ($availableRooms as $roomNumber) {
             $stmt = $pdo->prepare("UPDATE rooms SET status = 'reserved' WHERE room_number = :room_number");
-            $stmt->execute([':room_number' => $room]);
+            $stmt->execute([':room_number' => $roomNumber]);
         }
 
-        // Return booking details
+        // Return booking details to the guest
         echo json_encode([
             "booking" => [
-                "confirmation_number" => $confirmation_number,
-                "total_cost" => $total_cost,
-                "child_discount" => $child_discount,
-                "final_cost" => $final_cost
+                "confirmation_number" => $confirmationNumber,
+                "total_cost" => $totalCost,
+                "child_discount" => $childDiscount,
+                "final_cost" => $finalCost
             ]
         ]);
         exit;
