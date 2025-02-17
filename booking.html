@@ -23,7 +23,7 @@
     ></script>
   </head>
 
-  <body class="booking-page">
+  <body class="booking">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" href="index.html"
         >Hotel Siva Prasanth Sivakumar</a
@@ -63,25 +63,25 @@
     <div class="content-box">
       <div class="container mt-5">
         <h1 class="text-center">Make a Reservation</h1>
-        <div id="availabilityMessage" class="mt-3"></div>
-        <form id="bookingForm">
+        <div id="availability-message" class="mt-3"></div>
+        <form id="booking-form">
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="checkinDate">Check-in Date</label>
+              <label for="checkin">Check-in Date</label>
               <input
                 type="date"
                 class="form-control"
-                id="checkinDate"
+                id="checkin"
                 name="check_in"
                 required
               />
             </div>
             <div class="form-group col-md-6">
-              <label for="checkoutDate">Check-out Date</label>
+              <label for="checkout">Check-out Date</label>
               <input
                 type="date"
                 class="form-control"
-                id="checkoutDate"
+                id="checkout"
                 name="check_out"
                 required
               />
@@ -90,22 +90,22 @@
 
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="numberOfRooms">Number of Rooms</label>
+              <label for="rooms">Number of Rooms</label>
               <input
                 type="number"
                 class="form-control"
-                id="numberOfRooms"
+                id="rooms"
                 name="num_rooms"
                 min="1"
                 required
               />
             </div>
             <div class="form-group col-md-6">
-              <label for="numberOfAdults">Number of Adults</label>
+              <label for="adults">Number of Adults</label>
               <input
                 type="number"
                 class="form-control"
-                id="numberOfAdults"
+                id="adults"
                 name="num_adults"
                 min="1"
                 required
@@ -115,11 +115,11 @@
 
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="numberOfChildren">Number of Children</label>
+              <label for="children">Number of Children</label>
               <input
                 type="number"
                 class="form-control"
-                id="numberOfChildren"
+                id="children"
                 name="num_children"
                 min="0"
               />
@@ -128,21 +128,21 @@
 
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="guestName">Guest Name</label>
+              <label for="guest_name">Guest Name</label>
               <input
                 type="text"
                 class="form-control"
-                id="guestName"
+                id="guest_name"
                 name="guest_name"
                 required
               />
             </div>
             <div class="form-group col-md-6">
-              <label for="guestPhone">Guest Phone</label>
+              <label for="guest_phone">Guest Phone</label>
               <input
                 type="tel"
                 class="form-control"
-                id="guestPhone"
+                id="guest_phone"
                 name="guest_phone"
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                 required
@@ -153,14 +153,14 @@
           <button
             type="button"
             class="btn btn-primary btn-block"
-            id="checkAvailabilityButton"
+            id="check-availability"
           >
             Check Availability
           </button>
           <button
             type="button"
             class="btn btn-success btn-block d-none"
-            id="bookNowButton"
+            id="book-now"
           >
             Book Now
           </button>
@@ -169,33 +169,29 @@
     </div>
     <script>
       document
-        .getElementById("checkAvailabilityButton")
+        .getElementById("check-availability")
         .addEventListener("click", function () {
-          const bookingForm = document.getElementById("bookingForm");
-          const formData = new FormData(bookingForm);
-          formData.append("check_availability", "1");
+          const form = document.getElementById("booking-form");
+          const formData = new FormData(form);
+          formData.append("check_availability", "1"); // Add a flag to check availability
           fetch("reservation.php", {
             method: "POST",
             body: formData,
           })
             .then((response) => response.json())
             .then((data) => {
-              const availabilityMessageDiv = document.getElementById(
-                "availabilityMessage"
+              const messageDiv = document.getElementById(
+                "availability-message"
               );
               if (data.error) {
-                availabilityMessageDiv.innerHTML = `<p class="text-danger">${data.error}</p>`;
+                messageDiv.innerHTML = `<p class="text-danger">${data.error}</p>`;
               } else if (data.available) {
-                availabilityMessageDiv.innerHTML =
+                messageDiv.innerHTML =
                   '<p class="text-success">Rooms are available. You can proceed to book.</p>';
-                document
-                  .getElementById("bookNowButton")
-                  .classList.remove("d-none");
+                document.getElementById("book-now").classList.remove("d-none");
               } else {
-                availabilityMessageDiv.innerHTML = `<p class="text-danger">Rooms are not available. ${data.reason}</p>`;
-                document
-                  .getElementById("bookNowButton")
-                  .classList.add("d-none");
+                messageDiv.innerHTML = `<p class="text-danger">Rooms are not available. ${data.reason}</p>`;
+                document.getElementById("book-now").classList.add("d-none");
               }
             })
             .catch((error) => {
@@ -204,23 +200,23 @@
         });
 
       document
-        .getElementById("bookNowButton")
+        .getElementById("book-now")
         .addEventListener("click", function () {
-          const bookingForm = document.getElementById("bookingForm");
-          const formData = new FormData(bookingForm);
+          const form = document.getElementById("booking-form");
+          const formData = new FormData(form);
           fetch("reservation.php", {
             method: "POST",
             body: formData,
           })
             .then((response) => response.json())
             .then((data) => {
-              const availabilityMessageDiv = document.getElementById(
-                "availabilityMessage"
+              const messageDiv = document.getElementById(
+                "availability-message"
               );
               if (data.error) {
-                availabilityMessageDiv.innerHTML = `<p class="text-danger">${data.error}</p>`;
+                messageDiv.innerHTML = `<p class="text-danger">${data.error}</p>`;
               } else if (data.booking) {
-                availabilityMessageDiv.innerHTML = `
+                messageDiv.innerHTML = `
                   <p class="text-success">Room booked successfully!</p>
                   <p>Confirmation Number: ${
                     data.booking.confirmation_number
@@ -232,9 +228,7 @@
                   <p>Final Cost: $${data.booking.final_cost.toFixed(2)}</p>
                   <p>Please print or write down your confirmation number. You will need it to claim your room at the hotel.</p>
                 `;
-                document
-                  .getElementById("bookNowButton")
-                  .classList.add("d-none");
+                document.getElementById("book-now").classList.add("d-none");
               }
             })
             .catch((error) => {
