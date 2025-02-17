@@ -62,7 +62,7 @@ h3 {
 .border-button {
   border: 0.2vw solid #000;
   transition: background-color 0.3s, color 0.3s;
-  box-shadow: 0 0.5vw 0.5vw rgb(255, 255, 255);
+  box-shadow: 0 0.5vw 0.5vw rgb(0, 0, 0);
 }
 
 .border-button:hover {
@@ -105,35 +105,33 @@ body.service-page {
   color: #ffffff; /* Changed from #000000 to #ffffff for better contrast */
   line-height: 1.6;
 }
-body.attractions-page {
-  background-color: #ffffff;
+body.attractions {
+  background-color: #f0f0f0;
   background-image: url("attractionsimg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: "Arial", sans-serif;
   padding-top: 7vh;
-  color: #333333; /* Changed from #000000 to #333333 for better contrast */
+  color: #333;
   line-height: 1.6;
 }
 .content-box {
-  background-color: #ffffffe2;
+  background-color: #fff;
   padding: 60px 0;
   margin: auto;
   max-width: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.429);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   padding-top: 10vh;
-  box-shadow: 0 0.8vw 0.8vw rgb(0, 0, 0);
 }
 
 .hero-section {
   background-size: cover;
   background-position: center;
-  color: #ffffff;
+  color: #000000;
   padding: 10vh 0;
-  box-shadow: #000 0 0 10px;
 }
 
 .hero-section h1 {
