@@ -168,73 +168,66 @@
       </div>
     </div>
     <script>
-      document
-        .getElementById("check-availability")
-        .addEventListener("click", function () {
-          const form = document.getElementById("booking-form");
-          const formData = new FormData(form);
-          formData.append("check_availability", "1");
-          fetch("reservation.php", {
-            method: "POST",
-            body: formData,
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              const messageDiv = document.getElementById(
-                "availability-message"
-              );
-              if (data.error) {
-                messageDiv.innerHTML = `<p class="text-danger">${data.error}</p>`;
-              } else if (data.available) {
-                messageDiv.innerHTML =
-                  '<p class="text-success">Rooms are available. You can proceed to book.</p>';
-                document.getElementById("book-now").classList.remove("d-none");
-              } else {
-                messageDiv.innerHTML = `<p class="text-danger">Rooms are not available. ${data.reason}</p>`;
-                document.getElementById("book-now").classList.add("d-none");
-              }
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-            });
-        });
+      function handleAvailabilityResponse(data) {
+        const messageDiv = document.getElementById("availability-message");
+        if (data.error) {
+          messageDiv.innerHTML = `<p class="text-danger">${data.error}</p>`;
+        } else if (data.available) {
+          messageDiv.innerHTML =
+            '<p class="text-success">Rooms are available. You can proceed to book.</p>';
+          document.getElementById("book-now").classList.remove("d-none");
+        } else {
+          messageDiv.innerHTML = `<p class="text-danger">Rooms are not available. ${data.reason}</p>`;
+          document.getElementById("book-now").classList.add("d-none");
+        }
+      }
+
+      function handleBookingResponse(data) {
+        const messageDiv = document.getElementById("availability-message");
+        if (data.error) {
+          messageDiv.innerHTML = `<p class="text-danger">${data.error}</p>`;
+        } else if (data.booking) {
+          messageDiv.innerHTML = `
+            <p class="text-success">Room booked successfully!</p>
+            <p>Confirmation Number: ${data.booking.confirmation_number}</p>
+            <p>Total Cost: $${data.booking.total_cost.toFixed(2)}</p>
+            <p>Child Discount: $${data.booking.child_discount.toFixed(2)}</p>
+            <p>Final Cost: $${data.booking.final_cost.toFixed(2)}</p>
+            <p>Please print or write down your confirmation number. You will need it to claim your room at the hotel.</p>
+          `;
+          document.getElementById("book-now").classList.add("d-none");
+        }
+      }
+
+      function checkAvailability() {
+        const form = document.getElementById("booking-form");
+        const formData = new FormData(form);
+        formData.append("check_availability", "1");
+        fetch("reservation.php", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then(handleAvailabilityResponse)
+          .catch((error) => console.error("Error:", error));
+      }
+
+      function bookNow() {
+        const form = document.getElementById("booking-form");
+        const formData = new FormData(form);
+        fetch("reservation.php", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then(handleBookingResponse)
+          .catch((error) => console.error("Error:", error));
+      }
 
       document
-        .getElementById("book-now")
-        .addEventListener("click", function () {
-          const form = document.getElementById("booking-form");
-          const formData = new FormData(form);
-          fetch("reservation.php", {
-            method: "POST",
-            body: formData,
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              const messageDiv = document.getElementById(
-                "availability-message"
-              );
-              if (data.error) {
-                messageDiv.innerHTML = `<p class="text-danger">${data.error}</p>`;
-              } else if (data.booking) {
-                messageDiv.innerHTML = `
-                  <p class="text-success">Room booked successfully!</p>
-                  <p>Confirmation Number: ${
-                    data.booking.confirmation_number
-                  }</p>
-                  <p>Total Cost: $${data.booking.total_cost.toFixed(2)}</p>
-                  <p>Child Discount: $${data.booking.child_discount.toFixed(
-                    2
-                  )}</p>
-                  <p>Final Cost: $${data.booking.final_cost.toFixed(2)}</p>
-                  <p>Please print or write down your confirmation number. You will need it to claim your room at the hotel.</p>
-                `;
-                document.getElementById("book-now").classList.add("d-none");
-              }
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-            });
-        });
+        .getElementById("check-availability")
+        .addEventListener("click", checkAvailability);
+      document.getElementById("book-now").addEventListener("click", bookNow);
     </script>
   </body>
 </html>
