@@ -3,8 +3,8 @@ session_start();
 header('Content-Type: application/json');
 
 $dsn = "mysql:host=localhost;dbname=hotel_db;charset=utf8mb4";
-$dbUsername = "customer_user"; 
-$dbPassword = "passwordCUSto#33"; 
+$username = "customer_user"; 
+$password = "passwordCUSto#33"; 
 
 try {
     $pdo = new PDO($dsn, $dbUsername, $dbPassword, [
@@ -22,20 +22,20 @@ try {
         $guestName = trim($_POST["guest_name"] ?? '');
         $guestPhone = trim($_POST["guest_phone"] ?? '');
 
-        // check-in date > today
-        if (strtotime($checkInDate) < strtotime(date("Y-m-d"))) {
+        // check-in date has to be today or later 
+        if (strtotime($check_in) < strtotime(date("Y-m-d"))) {
             echo json_encode(["error" => "Check-in date cannot be in the past."]);
             exit;
         }
 
-        // check out date > check in date
-        if (strtotime($checkOutDate) <= strtotime($checkInDate)) {
+        // check out date must be after check-in date
+        if (strtotime($check_out) <= strtotime($check_in)) {
             echo json_encode(["error" => "Check-out date must be later than check-in date."]);
             exit;
         }
 
-        // Ensure numbers are positive
-        if ($numberOfRooms <= 0 || $numberOfAdults <= 0) {
+        // number of rooms and adults must be at least 1
+        if ($num_rooms <= 0 || $num_adults <= 0) {
             echo json_encode(["error" => "Number of rooms and adults must be at least 1."]);
             exit;
         }
@@ -48,8 +48,8 @@ try {
             exit;
         }
 
-        // Room availability for guest stay
-        foreach ($availableRooms as $roomNumber) {
+        // Room availability for the selected dates
+        foreach ($rooms as $room) {
             $stmt = $pdo->prepare("SELECT * FROM reservations WHERE room_number = :room_number AND 
                                    ((:check_in BETWEEN check_in_date AND check_out_date) OR 
                                     (:check_out BETWEEN check_in_date AND check_out_date))");
@@ -72,8 +72,8 @@ try {
         // Base price per night per room
         $pricePerNight = 100.00;
         
-        // Child discount 5% for each child
-        $childDiscount = ($numberOfChildren * $pricePerNight * 0.05);
+        // Calculate child discount 5% for each child
+        $child_discount = ($num_children * $price_per_night * 0.05);
 
         //total cost
         $totalCost = ($numberOfRooms * $pricePerNight * $numberOfNights);
@@ -85,7 +85,7 @@ try {
         // Generate a unique confirmation number
         $confirmationNumber = uniqid("CONF-");
 
-        // Insert to database
+        // Insert to the database
         $sql = "INSERT INTO reservations 
                 (check_in_date, check_out_date, number_of_rooms, number_of_adults, number_of_children, room_number, total_cost, confirmation_number, guest_name, guest_phone) 
                 VALUES 
@@ -110,6 +110,7 @@ try {
             $stmt->execute([':room_number' => $roomNumber]);
         }
 
+        // Return booking details to the guest
         // Return booking details to the guest
         echo json_encode([
             "booking" => [
