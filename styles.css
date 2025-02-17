@@ -2,36 +2,28 @@ p span {
   text-align: center;
   display: block;
 }
+
+h1,
+h2,
+h3 {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  font-family: "Helvetica Neue", sans-serif;
+}
+
 h1 {
   color: #333;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   animation: pop-up 0.5s ease-in-out;
-  font-family: "Helvetica Neue", sans-serif;
-}
-
-@keyframes pop-up {
-  0% {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
 }
 
 h2 {
   color: #444;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   animation: slide-in 0.5s ease-in-out;
-  font-family: "Helvetica Neue", sans-serif;
 }
 
 h3 {
   color: #555;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   animation: fade-in 0.5s ease-in-out;
-  font-family: "Helvetica Neue", sans-serif;
 }
 
 .service-img {
@@ -39,17 +31,21 @@ h3 {
   height: 20vh;
   object-fit: cover;
 }
+
 .navbar-nav .nav-link:hover {
   color: #f39c12 !important;
 }
+
 .navbar {
   box-shadow: 0 0.5vw 0.5vw rgb(0, 244, 89);
   background-color: #e8f900;
   margin-bottom: 20px;
 }
+
 .bg-primary {
   background-color: rgb(255, 255, 255) !important;
 }
+
 .center-content {
   display: flex;
   flex-direction: column;
@@ -70,52 +66,44 @@ h3 {
   color: #ffffff;
 }
 
-body.home {
-  background-color: #488adc;
-  background-image: url("homeimg.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+body {
   font-family: "Arial", sans-serif;
   padding-top: 7vh;
   color: #333;
   line-height: 1.6;
+}
+
+body.home,
+body.booking,
+body.service,
+body.attractions {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+body.home {
+  background-color: #488adc;
+  background-image: url("homeimg.jpg");
 }
 
 body.booking {
   background-color: #488adc;
   background-image: url("bookingimg.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  font-family: "Arial", sans-serif;
-  padding-top: 7vh;
-  color: #333;
-  line-height: 1.6;
 }
 
 body.service {
   background-color: #292f36;
   background-image: url("serviceimg.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  font-family: "Arial", sans-serif;
-  padding-top: 7vh;
   color: #000000;
-  line-height: 1.6;
 }
+
 body.attractions {
   background-color: #ffffff;
   background-image: url("attractionsimg.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  font-family: "Arial", sans-serif;
-  padding-top: 7vh;
   color: #000000;
-  line-height: 1.6;
 }
+
 .content-box {
   background-color: #ffffffe2;
   padding: 60px 0;
@@ -169,6 +157,17 @@ footer {
 .btn-primary:hover {
   background-color: #0056b3;
   border-color: #004085;
+}
+
+@keyframes pop-up {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes slide-in {
@@ -274,24 +273,17 @@ footer {
   background-color: #f8f9fa;
 }
 
-.attractions-list .attraction-item {
-  margin-bottom: 20px;
-}
-
-.attractions-list .attraction-item h3 {
-  color: #333;
-}
-
-.attractions-list .attraction-item p {
-  color: #666;
-}
-
 .attractions-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 2vw;
 }
+
+.attractions-list .attraction-item {
+  margin-bottom: 20px;
+}
+
 .attraction-item {
   flex: 1 1 30vw;
   margin: 2vw;
@@ -301,16 +293,19 @@ footer {
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .attraction-item:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+
 .attraction-item img {
   width: 100%;
   height: auto;
   max-height: 20vh;
   object-fit: cover;
 }
+
 .attraction-item p {
   margin-top: 1vh;
   padding: 1vh;
