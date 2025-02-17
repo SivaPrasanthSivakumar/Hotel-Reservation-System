@@ -173,7 +173,7 @@
         .addEventListener("click", function () {
           const form = document.getElementById("booking-form");
           const formData = new FormData(form);
-          formData.append("check_availability", "1"); // Add a flag to check availability
+          formData.append("check_availability", "1");
           fetch("reservation.php", {
             method: "POST",
             body: formData,
