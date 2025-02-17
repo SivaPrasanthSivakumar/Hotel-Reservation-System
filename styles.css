@@ -78,7 +78,7 @@ body.home-page {
   background-attachment: fixed;
   font-family: "Arial", sans-serif;
   padding-top: 7vh;
-  color: #333;
+  color: #ffffff; /* Changed from #333 to #ffffff for better contrast */
   line-height: 1.6;
 }
 
@@ -90,7 +90,7 @@ body.booking-page {
   background-attachment: fixed;
   font-family: "Arial", sans-serif;
   padding-top: 7vh;
-  color: #333;
+  color: #ffffff; /* Changed from #333 to #ffffff for better contrast */
   line-height: 1.6;
 }
 
@@ -102,7 +102,7 @@ body.service-page {
   background-attachment: fixed;
   font-family: "Arial", sans-serif;
   padding-top: 7vh;
-  color: #000000;
+  color: #ffffff; /* Changed from #000000 to #ffffff for better contrast */
   line-height: 1.6;
 }
 body.attractions-page {
@@ -113,7 +113,7 @@ body.attractions-page {
   background-attachment: fixed;
   font-family: "Arial", sans-serif;
   padding-top: 7vh;
-  color: #000000;
+  color: #333333; /* Changed from #000000 to #333333 for better contrast */
   line-height: 1.6;
 }
 .content-box {
