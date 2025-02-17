@@ -28,7 +28,12 @@ INSERT INTO rooms (room_number, price_per_night, status) VALUES
 ('Room2', 100.00, 'available'),
 ('Room3', 100.00, 'available'),
 ('Room4', 100.00, 'available'),
-('Room5', 100.00, 'available');
+('Room5', 100.00, 'available'),
+('Room6', 100.00, 'available'),
+('Room7', 100.00, 'available'),
+('Room8', 100.00, 'available'),
+('Room9', 100.00, 'available'),
+('Room10', 100.00, 'available');
 
 CREATE USER 'customer_user'@'localhost' IDENTIFIED BY 'pasreservationsswordCUSto#33';
 GRANT SELECT, INSERT,update ON hotel_db.reservations TO 'customer_user'@'localhost';
