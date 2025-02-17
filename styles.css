@@ -151,7 +151,7 @@ footer {
 .btn-primary {
   background-color: #007bff;
   border-color: #007bff;
-  animation: bounce 4s infinite;
+  animation: bounce 3s infinite;
 }
 
 .btn-primary:hover {
@@ -269,7 +269,7 @@ footer {
 .card:hover {
   transform: scale(1.05);
   transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 1.5vw 1.5vw rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1.5vw 1.5vw rgba(0, 0, 0, 0.511);
   background-color: #f8f9fa;
 }
 
