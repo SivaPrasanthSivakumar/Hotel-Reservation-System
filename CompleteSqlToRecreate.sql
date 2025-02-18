@@ -1,4 +1,3 @@
-
 CREATE DATABASE hotel_db;
 USE hotel_db;
 
@@ -22,7 +21,6 @@ CREATE TABLE rooms (
     status ENUM('available', 'reserved') DEFAULT 'available'
 );
 
-
 INSERT INTO rooms (room_number, price_per_night, status) VALUES
 ('Room1', 100.00, 'available'),
 ('Room2', 100.00, 'available'),
@@ -35,10 +33,9 @@ INSERT INTO rooms (room_number, price_per_night, status) VALUES
 ('Room9', 100.00, 'available'),
 ('Room10', 100.00, 'available');
 
-CREATE USER 'customer_user'@'localhost' IDENTIFIED BY 'pasreservationsswordCUSto#33';
-GRANT SELECT, INSERT,update ON hotel_db.reservations TO 'customer_user'@'localhost';
-GRANT SELECT,update ON hotel_db.rooms TO 'customer_user'@'localhost';
-
+CREATE USER 'customer_user'@'localhost' IDENTIFIED BY 'passwordCUSto#33';
+GRANT SELECT, INSERT, UPDATE ON hotel_db.reservations TO 'customer_user'@'localhost';
+GRANT SELECT, UPDATE ON hotel_db.rooms TO 'customer_user'@'localhost';
 
 CREATE USER 'admin_user'@'localhost' IDENTIFIED BY 'passwordADM@2348';
 GRANT ALL PRIVILEGES ON hotel_db.* TO 'admin_user'@'localhost';

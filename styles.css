@@ -26,33 +26,22 @@ h3 {
   animation: fade-in 0.5s ease-in-out;
 }
 
-.service-img {
-  width: 100%;
-  height: 20vh;
-  object-fit: cover;
-}
-
-.navbar-nav .nav-link:hover {
-  color: #f39c12 !important;
-}
-
 .navbar {
   box-shadow: 0 0.5vw 0.5vw rgb(0, 244, 89);
   background-color: #e8f900;
   margin-bottom: 20px;
 }
 
-.bg-primary {
-  background-color: rgb(255, 255, 255) !important;
+.navbar-nav .nav-link:hover {
+  color: #f39c12 !important;
 }
 
-.center-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  margin: auto;
+.nav-link {
+  color: #ffffff !important;
+}
+
+.nav-link:hover {
+  color: #f39c12 !important;
 }
 
 .border-button {
@@ -64,6 +53,28 @@ h3 {
 .border-button:hover {
   background-color: #5b9fff92;
   color: #ffffff;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  animation: bounce 3s infinite;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.btn-danger,
+.btn-primary {
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-danger:hover,
+.btn-primary:hover {
+  transform: scale(1.05);
 }
 
 body {
@@ -104,6 +115,16 @@ body.attractions {
   color: #000000;
 }
 
+body.admin {
+  background-color: #f8f9fa;
+  color: #343a40;
+  font-family: "Arial", sans-serif;
+}
+
+.container {
+  margin-top: 10vh;
+}
+
 .content-box {
   background-color: #ffffffe2;
   padding: 60px 0;
@@ -114,6 +135,15 @@ body.attractions {
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   padding-top: 10vh;
   box-shadow: 0 0.8vw 0.8vw rgb(0, 0, 0);
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: auto;
 }
 
 .hero {
@@ -132,12 +162,65 @@ body.attractions {
   font-size: 1.25rem;
 }
 
-.nav-link {
-  color: #ffffff !important;
+.service-img {
+  width: 100%;
+  height: 20vh;
+  object-fit: cover;
 }
 
-.nav-link:hover {
-  color: #f39c12 !important;
+.attraction-item img {
+  width: 100%;
+  height: auto;
+  max-height: 20vh;
+  object-fit: cover;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+}
+
+.card-img-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 1.5vw 1.5vw rgba(0, 0, 0, 0.511);
+  background-color: #f8f9fa;
+}
+
+.table {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 0.5vw 0.5vw rgba(0, 0, 0, 0.1);
+}
+
+.table th,
+.table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: #343a40;
+  color: #ffffff;
+}
+
+.table td {
+  color: #343a40;
 }
 
 footer {
@@ -146,17 +229,6 @@ footer {
   text-align: center;
   padding: 2vh 0;
   margin-top: 4vh;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-  animation: bounce 3s infinite;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #004085;
 }
 
 @keyframes pop-up {
@@ -266,13 +338,6 @@ footer {
   }
 }
 
-.card:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 1.5vw 1.5vw rgba(0, 0, 0, 0.511);
-  background-color: #f8f9fa;
-}
-
 .attractions-list {
   display: flex;
   flex-wrap: wrap;
@@ -299,36 +364,13 @@ footer {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.attraction-item img {
-  width: 100%;
-  height: auto;
-  max-height: 20vh;
-  object-fit: cover;
-}
-
 .attraction-item p {
   margin-top: 1vh;
   padding: 1vh;
 }
 
-.card {
-  border: none;
-  border-radius: 10px;
-}
-
-.card-img-top {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.card-title {
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-
-.card-text {
-  font-size: 1rem;
-  color: #6c757d;
+.bg-primary {
+  background-color: rgb(255, 255, 255) !important;
 }
 
 .text-center {
@@ -337,4 +379,22 @@ footer {
   font-weight: bold;
   color: #343a40;
   font-family: "Helvetica Neue", sans-serif;
+}
+
+.navbar-dark.bg-dark {
+  background-color: #343a40 !important;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+h2 {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #343a40;
+  text-align: center;
 }
