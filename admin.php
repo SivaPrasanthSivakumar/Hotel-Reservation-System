@@ -16,19 +16,17 @@ function getDatabaseConnection() {
 function authenticateAdmin($username, $password) {
     $admin_username = 'admin_user';
     $admin_password = 'passwordADM@2348';
-    $admin_password_hash = password_hash($admin_password, PASSWORD_DEFAULT); 
-    return $username === $admin_username && password_verify($password, $admin_password_hash);
+    return $username === $admin_username && $password === $admin_password;
 }
 
 function handleLogin() {
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $admin_user = $_POST["username"];
         $admin_pass = $_POST["password"];
-        $pdo = getDatabaseConnection();
 
         if (authenticateAdmin($admin_user, $admin_pass)) {
             $_SESSION['admin_logged_in'] = true;
-            displayAdminPage();
+            header("Location: admin.php");
             exit;
         } else {
             echo "<p>Invalid login credentials. Please try again.</p>";
@@ -38,7 +36,7 @@ function handleLogin() {
 
 function checkAdminSession() {
     if (!isset($_SESSION['admin_logged_in'])) {
-        header("Location: admin.html");
+        displayLoginForm();
         exit;
     }
 }
@@ -131,6 +129,10 @@ function handleAjaxRequests() {
 }
 
 function displayAdminPage() {
+    if (!isset($_SESSION['admin_logged_in'])) {
+        displayLoginForm();
+        return;
+    }
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -149,6 +151,36 @@ function displayAdminPage() {
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+    </html>
+    <?php
+}
+
+function displayLoginForm() {
+    ?>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Login</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body class="admin">
+        <div class="container mt-5">
+            <h2 class="text-center">Admin Login</h2>
+            <form method="POST" action="admin.php">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required />
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+        </div>
     </body>
     </html>
     <?php
@@ -250,4 +282,5 @@ checkAdminSession();
 handleLogout();
 handleAdminActions();
 handleAjaxRequests();
+displayAdminPage();
 ?>
