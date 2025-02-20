@@ -6,15 +6,15 @@
 
 .navbar-nav .nav-link:hover,
 .nav-link:hover {
-  color: #e74c3c !important;
+  color: #e74c3c;
 }
 
 .nav-link {
-  color: #ecf0f1 !important;
+  color: #ecf0f1;
 }
 
 .navbar-dark.bg-dark {
-  background-color: #2c3e50 !important;
+  background-color: #2c3e50;
 }
 
 .navbar-brand {
@@ -160,7 +160,7 @@ body.booking {
 body.service {
   background-color: #2c3e50;
   background-image: url("serviceimg.jpg");
-  color: #ecf0f1;
+  color: #8c86ff;
 }
 
 body.attractions {
@@ -185,9 +185,9 @@ body.admin {
   color: #2c3e50;
   margin: auto;
   margin-top: 3rem;
-  max-width: 60%;
+  max-width: 65%;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
-  border-radius: 0.5em;
+  border-radius: 3em;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   padding-top: 1vh;
   padding-bottom: 1vh;
@@ -222,8 +222,8 @@ body.admin {
 
 .attraction-item img {
   width: 100%;
-  height: auto;
-  max-height: 20vh;
+  height: 200%;
+  max-height: 9vh;
   object-fit: cover;
 }
 
@@ -232,18 +232,24 @@ body.admin {
   border-radius: 1em;
   padding-top: 1vh;
   padding-bottom: 1vh;
+  background-color: #a5a5a5;
 }
 
 .card-1 {
-  border: none;
+  padding: auto;
+  color: #2c3e50;
   margin: auto;
   margin-top: 3rem;
-  max-width: 80%;
-  max-height: 80%;
-  border-radius: 1em;
+  max-width: 60%;
+  box-shadow: 0 1rem 1em rgb(0, 0, 0);
+  border-radius: 0.5em;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
   padding-top: 1vh;
   padding-bottom: 1vh;
-  background-color: #ecf0f1;
+  padding-left: 1vh;
+  padding-right: 1vh;
+  box-shadow: 0 0.8em 0.8em rgba(0, 0, 0, 0.1);
+  background-color: #a5a5a5;
   box-shadow: 0 0.8em 0.8em rgba(0, 0, 0, 0.1);
 }
 
@@ -259,14 +265,14 @@ body.admin {
 
 .card-text {
   font-size: 1rem;
-  color: #7f8c8d;
+  color: #000000;
 }
 
 .card:hover {
   transform: scale(1.05);
   transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 1.5em 1.5em rgba(0, 0, 0, 0.1);
-  background-color: #ecf0f1;
+  box-shadow: 0 1.5em 1.5em rgba(0, 0, 0, 0.582);
+  background-color: #8de8ff;
 }
 
 .table {
@@ -392,14 +398,14 @@ footer {
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 2em;
-  margin-bottom: 2vh;
+  margin-bottom: 1.5vh;
 }
 
 .attraction-item {
   flex: 1 1 30em;
   margin: 2em 0;
   text-align: center;
-  background-color: #ffffff;
+  background-color: #a5a5a5;
   box-shadow: 0 0.4em 0.8em rgba(0, 0, 0, 0.1);
   border-radius: 1em;
   overflow: hidden;
@@ -408,12 +414,14 @@ footer {
 
 .attraction-item:hover {
   transform: scale(1.05);
+  background-color: #8de8ff;
   box-shadow: 0 0.8em 1.6em rgba(0, 0, 0, 0.2);
 }
 
 .attraction-item p {
   margin-top: 1vh;
-  padding: 1vh;
+  padding: 1.3vh;
+  flex-grow: 1.5;
 }
 
 p span {
@@ -422,5 +430,5 @@ p span {
 }
 
 .bg-primary {
-  background-color: rgb(255, 255, 255) !important;
+  background-color: rgb(255, 255, 255);
 }
