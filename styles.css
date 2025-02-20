@@ -126,12 +126,12 @@ body.admin {
 }
 
 .content-box {
-  background-color: #ffffffb6;
+  background-color: #ffffffe0;
   padding: auto;
   color: #2c3e50;
   margin: auto;
   margin-top: 3rem;
-  max-width: 80%;
+  max-width: 60%;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
   border-radius: 0.5em;
   transition: box-shadow 0.3s ease, transform 0.3s ease;

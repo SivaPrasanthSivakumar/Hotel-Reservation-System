@@ -66,108 +66,112 @@
     <div class="content-box">
       <div class="container mt-5">
         <h1 class="text-center">Make a Reservation</h1>
-        <div id="availability-message" class="mt-3"></div>
-        <form id="booking-form">
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="checkin">Check-in Date</label>
-              <input
-                type="date"
-                class="form-control"
-                id="checkin"
-                name="check_in"
-                required
-              />
+        <div class="card-1">
+          <div id="availability-message" class="mt-3"></div>
+          <form id="booking-form">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="checkin">Check-in Date</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="checkin"
+                  name="check_in"
+                  required
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="checkout">Check-out Date</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="checkout"
+                  name="check_out"
+                  required
+                />
+              </div>
             </div>
-            <div class="form-group col-md-6">
-              <label for="checkout">Check-out Date</label>
-              <input
-                type="date"
-                class="form-control"
-                id="checkout"
-                name="check_out"
-                required
-              />
-            </div>
-          </div>
 
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="rooms">Number of Rooms</label>
-              <input
-                type="number"
-                class="form-control"
-                id="rooms"
-                name="num_rooms"
-                min="1"
-                required
-              />
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="rooms">Number of Rooms</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="rooms"
+                  name="num_rooms"
+                  min="1"
+                  required
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="adults">Number of Adults</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="adults"
+                  name="num_adults"
+                  min="1"
+                  required
+                />
+              </div>
             </div>
-            <div class="form-group col-md-6">
-              <label for="adults">Number of Adults</label>
-              <input
-                type="number"
-                class="form-control"
-                id="adults"
-                name="num_adults"
-                min="1"
-                required
-              />
-            </div>
-          </div>
 
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="children">Number of Children</label>
-              <input
-                type="number"
-                class="form-control"
-                id="children"
-                name="num_children"
-                min="0"
-              />
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="children">Number of Children</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="children"
+                  name="num_children"
+                  min="0"
+                />
+              </div>
             </div>
-          </div>
 
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="guest_name">Guest Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="guest_name"
-                name="guest_name"
-                required
-              />
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="guest_name">Guest Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="guest_name"
+                  name="guest_name"
+                  required
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="guest_phone">Guest Phone</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="guest_phone"
+                  name="guest_phone"
+                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  required
+                />
+                <small class="form-text text-muted">
+                  Format: 123-456-7890
+                </small>
+              </div>
             </div>
-            <div class="form-group col-md-6">
-              <label for="guest_phone">Guest Phone</label>
-              <input
-                type="tel"
-                class="form-control"
-                id="guest_phone"
-                name="guest_phone"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                required
-              />
-              <small class="form-text text-muted"> Format: 123-456-7890 </small>
-            </div>
-          </div>
-          <button
-            type="button"
-            class="btn btn-primary btn-block"
-            id="check-availability"
-          >
-            Check Availability
-          </button>
-          <button
-            type="button"
-            class="btn btn-success btn-block d-none"
-            id="book-now"
-          >
-            Book Now
-          </button>
-        </form>
+            <button
+              type="button"
+              class="btn btn-primary btn-block"
+              id="check-availability"
+            >
+              Check Availability
+            </button>
+            <button
+              type="button"
+              class="btn btn-success btn-block d-none"
+              id="book-now"
+            >
+              Book Now
+            </button>
+          </form>
+        </div>
       </div>
     </div>
     <script>
