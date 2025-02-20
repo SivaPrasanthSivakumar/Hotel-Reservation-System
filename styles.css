@@ -148,25 +148,15 @@ body.admin {
   margin: auto;
 }
 
-.hero {
-  background-image: url("hero-background.jpg");
-  background-size: cover;
-  background-position: center;
-  color: #ffffff;
-  padding: 10vh 0;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+.lead {
+  text-align: center;
+  margin: 2rem 0;
 }
 
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.hero p,
-.hero p.lead {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
+.btn-center {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 .service-img {
@@ -286,12 +276,6 @@ footer {
 }
 
 @media (max-width: 992px) {
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-  .hero p {
-    font-size: 1.125rem;
-  }
   .content-box {
     padding: 2.5vw;
     margin: 2vw auto;
@@ -305,12 +289,6 @@ footer {
   .navbar-nav {
     text-align: center;
   }
-  .hero h1 {
-    font-size: 2rem;
-  }
-  .hero p {
-    font-size: 1rem;
-  }
   .content-box {
     padding: 2vw;
     margin: 1vw auto;
@@ -321,12 +299,6 @@ footer {
 }
 
 @media (max-width: 576px) {
-  .hero h1 {
-    font-size: 1.5rem;
-  }
-  .hero p {
-    font-size: 0.875rem;
-  }
   .service-img {
     height: 10vh;
   }
