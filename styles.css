@@ -126,7 +126,7 @@ body.admin {
 }
 
 .content-box {
-  background-color: #ecf0f1b6;
+  background-color: #ffffffb6;
   padding: auto;
   color: #2c3e50;
   margin: auto;
@@ -176,6 +176,21 @@ body.admin {
 .card {
   border: none;
   border-radius: 1em;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+.card-1 {
+  border: none;
+  margin: auto;
+  margin-top: 3rem;
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 1em;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  background-color: #ecf0f1;
+  box-shadow: 0 0.8em 0.8em rgba(0, 0, 0, 0.1);
 }
 
 .card-img-top {
@@ -323,15 +338,12 @@ footer {
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 2em;
-}
-
-.attractions-list {
   margin-bottom: 2vh;
 }
 
 .attraction-item {
   flex: 1 1 30em;
-  margin: 2em;
+  margin: 2em 0;
   text-align: center;
   background-color: #ffffff;
   box-shadow: 0 0.4em 0.8em rgba(0, 0, 0, 0.1);
