@@ -1,5 +1,5 @@
 .navbar {
-  box-shadow: 0rem 1em 1em rgba(255, 213, 0, 0.676);
+  box-shadow: 0 1.5em 1.5em rgba(252, 255, 79, 0.884);
   background-color: #2980b9;
   margin-bottom: 2vh;
 }
@@ -30,7 +30,10 @@
 
 .border-button:hover {
   background-color: #2980b9;
-  color: #ffffff;
+  transform: scale(1.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 1.5em 1.5em rgba(0, 0, 0, 0.582);
+  color: #000000;
 }
 
 .btn-primary {
@@ -184,17 +187,15 @@ body.admin {
 
 .content-box {
   background-color: #ffffffa9;
-  padding: auto;
   color: #2c3e50;
   margin: auto;
   margin-top: 3rem;
   max-width: 50%;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
+  box-shadow: 1em 1em 1em rgb(19, 204, 255);
   border-radius: 3em;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   padding-top: 1vh;
   padding-bottom: 1vh;
-  box-shadow: 0 0.8em 0.8em rgba(0, 0, 0, 0.1);
 }
 
 .center-content {
@@ -253,7 +254,6 @@ body.admin {
   padding-right: 1vh;
   box-shadow: 0 0.8em 0.8em rgba(0, 0, 0, 0.1);
   background-color: #a5a5a5;
-  box-shadow: 0 0.8em 0.8em rgba(0, 0, 0, 0.1);
 }
 
 .card-img-top {
