@@ -6,13 +6,13 @@ p span {
 h1,
 h2,
 h3 {
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  text-shadow: 0.1vw 0.1vw 0.3vw rgba(0, 0, 0, 0.5);
   font-family: "Helvetica Neue", sans-serif;
 }
 
 h1 {
   color: #333;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0.2vw 0.2vw 0.4vw rgba(0, 0, 0, 0.5);
   animation: pop-up 0.5s ease-in-out;
 }
 
@@ -29,7 +29,7 @@ h3 {
 .navbar {
   box-shadow: 0 0.5vw 0.5vw rgb(0, 244, 89);
   background-color: #e8f900;
-  margin-bottom: 20px;
+  margin-bottom: 2vh;
 }
 
 .navbar-nav .nav-link:hover,
@@ -65,7 +65,7 @@ h3 {
 
 .btn-danger,
 .btn-primary {
-  border-radius: 5px;
+  border-radius: 0.5vw;
   transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -126,17 +126,17 @@ body.admin {
 }
 
 .content-box {
-  background-color: #ffffffe2;
-  padding: 60px 0;
+  background-color: #00a2ff;
+  padding: auto;
   color: #000000;
   margin: auto;
-  max-width: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.429);
-  border-radius: 5px;
+  max-width: 80%;
+  box-shadow: 0 0 1vw rgba(0, 0, 0, 0.429);
+  border-radius: 0.5vw;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
-  padding-top: 10vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
   box-shadow: 0 0.8vw 0.8vw rgb(0, 0, 0);
-  padding-bottom: 5vh; /* Add padding-bottom to ensure content fits within the page */
 }
 
 .center-content {
@@ -174,12 +174,12 @@ body.admin {
 
 .card {
   border: none;
-  border-radius: 10px;
+  border-radius: 1vw;
 }
 
 .card-img-top {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 1vw;
+  border-top-right-radius: 1vw;
 }
 
 .card-title {
@@ -201,7 +201,7 @@ body.admin {
 
 .table {
   background-color: #ffffff;
-  border-radius: 5px;
+  border-radius: 0.5vw;
   box-shadow: 0 0.5vw 0.5vw rgba(0, 0, 0, 0.1);
 }
 
@@ -268,10 +268,10 @@ footer {
     transform: translateY(0);
   }
   40% {
-    transform: translateY(-30px);
+    transform: translateY(-3vh);
   }
   60% {
-    transform: translateY(-15px);
+    transform: translateY(-1.5vh);
   }
 }
 
@@ -325,14 +325,14 @@ footer {
 }
 
 .attractions-list .attraction-item {
-  margin-bottom: 20px;
+  margin-bottom: 2vh;
 }
 
 .attraction-item {
   flex: 1 1 30vw;
   margin: 2vw;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.1);
   border-radius: 1vw;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -340,7 +340,7 @@ footer {
 
 .attraction-item:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.8vw 1.6vw rgba(0, 0, 0, 0.2);
 }
 
 .attraction-item p {
@@ -353,7 +353,7 @@ footer {
 }
 
 .text-center {
-  margin-bottom: 40px;
+  margin-bottom: 4vh;
   font-size: 2.5rem;
   font-weight: bold;
   color: #343a40;
