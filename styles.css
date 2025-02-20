@@ -6,66 +6,66 @@ p span {
 h1,
 h2,
 h3 {
-  text-shadow: 0.1vw 0.1vw 0.3vw rgba(0, 0, 0, 0.5);
+  text-shadow: 0.1em 0.1em 0.3em rgba(0, 0, 0, 0.5);
   font-family: "Helvetica Neue", sans-serif;
 }
 
 h1 {
-  color: #333;
-  text-shadow: 0.2vw 0.2vw 0.4vw rgba(0, 0, 0, 0.5);
+  color: #2c3e50;
+  text-shadow: 0.2em 0.2em 0.4em rgba(0, 0, 0, 0.5);
   animation: pop-up 0.5s ease-in-out;
 }
 
 h2 {
-  color: #444;
+  color: #34495e;
   animation: slide-in 0.5s ease-in-out;
 }
 
 h3 {
-  color: #555;
+  color: #7f8c8d;
   animation: fade-in 0.5s ease-in-out;
 }
 
 .navbar {
-  box-shadow: 0 0.5vw 0.5vw rgb(0, 244, 89);
-  background-color: #e8f900;
+  box-shadow: 0 0.5em 0.5em rgba(0, 0, 0, 0.1);
+  background-color: #2980b9;
   margin-bottom: 2vh;
 }
 
 .navbar-nav .nav-link:hover,
 .nav-link:hover {
-  color: #f39c12 !important;
+  color: #e74c3c !important;
 }
 
 .nav-link {
-  color: #ffffff !important;
+  color: #ecf0f1 !important;
 }
 
 .border-button {
-  border: 0.2vw solid #48ff00;
+  border: 0.2em solid #27ae60;
   transition: background-color 0.3s, color 0.3s;
-  box-shadow: 0 0.5vw 0.5vw rgb(0, 0, 0);
+  box-shadow: 0 0.5em 0.5em rgba(0, 0, 0, 0.1);
 }
 
 .border-button:hover {
-  background-color: #006aff92;
+  background-color: #2980b9;
   color: #ffffff;
 }
 
 .btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #3498db;
+  border-color: #3498db;
   animation: bounce 3s infinite;
 }
 
 .btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #004085;
+  background-color: #2980b9;
+  border-color: #1c6ea4;
 }
 
 .btn-danger,
 .btn-primary {
-  border-radius: 0.5vw;
+  border-radius: 0.5em;
   transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -77,7 +77,7 @@ h3 {
 body {
   font-family: "Arial", sans-serif;
   padding-top: 7vh;
-  color: #333;
+  color: #2c3e50;
   line-height: 1.6;
 }
 
@@ -92,7 +92,7 @@ body.attractions {
 
 body.home,
 body.booking {
-  background-color: #488adc;
+  background-color: #3498db;
 }
 
 body.home {
@@ -104,20 +104,20 @@ body.booking {
 }
 
 body.service {
-  background-color: #292f36;
+  background-color: #2c3e50;
   background-image: url("serviceimg.jpg");
-  color: #000000;
+  color: #ecf0f1;
 }
 
 body.attractions {
-  background-color: #ffffff;
+  background-color: #ecf0f1;
   background-image: url("attractionsimg.jpg");
-  color: #000000;
+  color: #2c3e50;
 }
 
 body.admin {
-  background-color: #f8f9fa;
-  color: #343a40;
+  background-color: #bdc3c7;
+  color: #2c3e50;
   font-family: "Arial", sans-serif;
 }
 
@@ -126,17 +126,18 @@ body.admin {
 }
 
 .content-box {
-  background-color: #00a2ff;
+  background-color: #ecf0f1b6;
   padding: auto;
-  color: #000000;
+  color: #2c3e50;
   margin: auto;
+  margin-top: 3rem;
   max-width: 80%;
-  box-shadow: 0 0 1vw rgba(0, 0, 0, 0.429);
-  border-radius: 0.5vw;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
+  border-radius: 0.5em;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   padding-top: 1vh;
   padding-bottom: 1vh;
-  box-shadow: 0 0.8vw 0.8vw rgb(0, 0, 0);
+  box-shadow: 0 0.8em 0.8em rgba(0, 0, 0, 0.1);
 }
 
 .center-content {
@@ -174,12 +175,12 @@ body.admin {
 
 .card {
   border: none;
-  border-radius: 1vw;
+  border-radius: 1em;
 }
 
 .card-img-top {
-  border-top-left-radius: 1vw;
-  border-top-right-radius: 1vw;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
 }
 
 .card-title {
@@ -189,20 +190,20 @@ body.admin {
 
 .card-text {
   font-size: 1rem;
-  color: #6c757d;
+  color: #7f8c8d;
 }
 
 .card:hover {
   transform: scale(1.05);
   transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 1.5vw 1.5vw rgba(0, 0, 0, 0.511);
-  background-color: #f8f9fa;
+  box-shadow: 0 1.5em 1.5em rgba(0, 0, 0, 0.1);
+  background-color: #ecf0f1;
 }
 
 .table {
   background-color: #ffffff;
-  border-radius: 0.5vw;
-  box-shadow: 0 0.5vw 0.5vw rgba(0, 0, 0, 0.1);
+  border-radius: 0.5em;
+  box-shadow: 0 0.5em 0.5em rgba(0, 0, 0, 0.1);
 }
 
 .table th,
@@ -212,17 +213,17 @@ body.admin {
 }
 
 .table th {
-  background-color: #343a40;
-  color: #ffffff;
+  background-color: #2c3e50;
+  color: #ecf0f1;
 }
 
 .table td {
-  color: #343a40;
+  color: #2c3e50;
 }
 
 footer {
-  background-color: #343a40;
-  color: #ffffff;
+  background-color: #2c3e50;
+  color: #ecf0f1;
   text-align: center;
   padding: 2vh 0;
   margin-top: 4vh;
@@ -277,8 +278,8 @@ footer {
 
 @media (max-width: 992px) {
   .content-box {
-    padding: 2.5vw;
-    margin: 2vw auto;
+    padding: 2.5em;
+    margin: 2em auto;
   }
   .service-img {
     height: 18vh;
@@ -290,8 +291,8 @@ footer {
     text-align: center;
   }
   .content-box {
-    padding: 2vw;
-    margin: 1vw auto;
+    padding: 2em;
+    margin: 1em auto;
   }
   .service-img {
     height: 15vh;
@@ -303,14 +304,14 @@ footer {
     height: 10vh;
   }
   .content-box {
-    padding: 1vw;
-    margin: 0.5vw auto;
+    padding: 1em;
+    margin: 0.5em auto;
   }
   .navbar {
-    padding: 1vw;
+    padding: 1em;
   }
   .navbar-nav .nav-link {
-    padding: 0.5vw;
+    padding: 0.5em;
   }
   footer {
     padding: 1vh 0;
@@ -321,26 +322,27 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding: 2vw;
+  padding: 2em;
 }
 
-.attractions-list .attraction-item {
+.attractions-list {
   margin-bottom: 2vh;
 }
 
 .attraction-item {
-  flex: 1 1 30vw;
-  margin: 2vw;
+  flex: 1 1 30em;
+  margin: 2em;
   text-align: center;
-  box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.1);
-  border-radius: 1vw;
+  background-color: #ffffff;
+  box-shadow: 0 0.4em 0.8em rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .attraction-item:hover {
   transform: scale(1.05);
-  box-shadow: 0 0.8vw 1.6vw rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.8em 1.6em rgba(0, 0, 0, 0.2);
 }
 
 .attraction-item p {
@@ -356,7 +358,7 @@ footer {
   margin-bottom: 4vh;
   font-size: 2.5rem;
   font-weight: bold;
-  color: #343a40;
+  color: #2c3e50;
   font-family: "Helvetica Neue", sans-serif;
 }
 
@@ -377,7 +379,7 @@ footer {
 }
 
 .navbar-dark.bg-dark {
-  background-color: #343a40 !important;
+  background-color: #2c3e50 !important;
 }
 
 .navbar-brand {
@@ -390,13 +392,13 @@ h2 {
   margin-bottom: 2vh;
   font-size: 2rem;
   font-weight: bold;
-  color: #343a40;
+  color: #2c3e50;
   text-align: center;
 }
 
 .btn-light.border-button {
   background-color: rgba(255, 255, 255, 0.8);
-  color: #333;
+  color: #2c3e50;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   text-align: center;
