@@ -42,13 +42,13 @@ h3 {
 }
 
 .border-button {
-  border: 0.2vw solid #000;
+  border: 0.2vw solid #48ff00;
   transition: background-color 0.3s, color 0.3s;
-  box-shadow: 0 0.5vw 0.5vw rgb(255, 255, 255);
+  box-shadow: 0 0.5vw 0.5vw rgb(0, 0, 0);
 }
 
 .border-button:hover {
-  background-color: #5b9fff92;
+  background-color: #006aff92;
   color: #ffffff;
 }
 
@@ -397,6 +397,13 @@ h2 {
 .btn-light.border-button {
   background-color: rgba(255, 255, 255, 0.8);
   color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .btn-light.border-button:hover {
