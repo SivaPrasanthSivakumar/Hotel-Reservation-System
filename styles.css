@@ -4,7 +4,6 @@
 }
 
 .navbar:hover {
-
   box-shadow: 0 0.5em 0.5em rgba(252, 255, 79, 0.884);
 }
 
@@ -187,7 +186,7 @@ body.attractions {
 
 body.admin {
   background-color: #85ceff;
-  background-image: url("admin.jpg");
+  background-image: url("login.gif");
   background-size: cover;
   background-repeat: no-repeat;
   color: #2c3e50;
