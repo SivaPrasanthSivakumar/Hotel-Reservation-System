@@ -191,12 +191,24 @@ body.admin {
   color: #2c3e50;
   font-family: "Arial", sans-serif;
   transition: transform 0.3s, box-shadow 0.3s;
+  margin: 0;
+  padding: 0;
+}
+
+body.admin-1 {
+  background-color: #ffffff;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #2c3e50;
+  font-family: "Arial", sans-serif;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-  margin-top: 10vh;
+  margin-top: 0vh;
 }
-
 .content-box {
   background-color: #ffffffa9;
   color: #2c3e50;
@@ -369,6 +381,9 @@ body.admin {
   padding: 0.75em;
   text-align: center;
   vertical-align: middle;
+  white-space: nowrap;
+  overflow: visible;
+  min-width: auto;
 }
 
 .table,

@@ -147,11 +147,17 @@ function displayAdminPage() {
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="styles.css"> 
     </head>
-    <body>
+    <body class="admin-1">
         <?php displayNavbar(); ?>
-        <div class="container mt-5">
-            <?php displayReservationsManagement(); ?>
-            <?php displayRoomManagement(); ?>
+        <p><b>Here's some music to keep you company while you work</b></p>
+        <audio controls autoplay loop>
+            <source src="background-music-instrumental-207886.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+        </audio> 
+        <p>
+        <div class="container mt-5" style="margin-top: 0; padding-top: 0;">
+        <?php displayReservationsManagement(); ?>
+        <?php displayRoomManagement(); ?>
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
@@ -247,6 +253,7 @@ function displayReservationsManagement() {
                     </td>
                 </tr>
             <?php endforeach; ?>
+
         </tbody>
     </table>
     </div>
@@ -258,6 +265,7 @@ function displayReservationsManagement() {
 function displayRoomManagement() {
     $rooms = getRooms();
     ?>
+    <p></p>
     <div class="card-3 mt-3">
     <h2>Room Management</h2>
     <div class="card-4 mb-4">
