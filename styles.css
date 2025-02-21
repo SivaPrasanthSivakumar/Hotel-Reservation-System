@@ -27,6 +27,7 @@
   font-size: 1.5rem;
   font-weight: bold;
 }
+
 .navbar-brand:hover {
   transform: scale(1.1);
   transition: transform 0.3s, box-shadow 0.3s;
@@ -42,8 +43,8 @@
   background-color: #2980b9;
   transform: scale(1.2);
   transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0.4em 0.4em rgb(0, 0, 0);
-  color: #000000;
+  box-shadow: 0 0.5em 0.5em #000;
+  color: #000;
 }
 
 .btn-primary {
@@ -207,6 +208,7 @@ body.admin-1 {
 .container {
   margin-top: 0vh;
 }
+
 .content-box {
   background-color: #ffffffa9;
   color: #2c3e50;
@@ -279,9 +281,10 @@ body.admin-1 {
   padding-right: 1vh;
   background-color: #a5a5a5;
 }
+
 .card-2 {
   padding: auto;
-  color: #000000;
+  color: #000;
   margin: auto;
   margin-top: 3rem;
   max-width: 60%;
@@ -291,8 +294,9 @@ body.admin-1 {
   padding-left: 1vh;
   padding-right: 1vh;
   background-color: #adffc7eb;
-  box-shadow: 0 0.1em 0.1em rgb(0, 0, 0);
+  box-shadow: 0 0.1em 0.1em #000;
 }
+
 .card-3 {
   padding: 1rem;
   margin: 1rem 0;
@@ -300,14 +304,16 @@ body.admin-1 {
   background-color: #399cff;
   transition: transform 0.3s;
 }
+
 .card-4 {
   padding: 1rem;
   margin: 1rem 0;
   border-radius: 0.5rem;
   background-color: #6cff76c3;
-  box-shadow: 0 0.1em 0.1em rgb(0, 0, 0);
+  box-shadow: 0 0.1em 0.1em #000;
   transition: transform 0.3s;
 }
+
 .card-admin {
   border: none;
   border-radius: 1em;
@@ -324,47 +330,7 @@ body.admin-1 {
 .card:hover {
   transform: scale(1.05);
   transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0.5em 0.5em rgb(0, 0, 0);
-}
-.card-1:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0.5em 0.5em rgb(0, 0, 0);
-}
-.card-2:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0.5em 0.5em rgb(0, 102, 255);
-}
-.card-3:hover {
-  transform: scale(1.02);
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0.5em 0.5em rgb(0, 0, 0);
-}
-.card-4:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0.5em 0.5em rgb(0, 102, 255);
-}
-.card-img-top {
-  border-top-left-radius: 1em;
-  border-top-right-radius: 1em;
-}
-
-.card-title {
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-
-.card-text {
-  font-size: 1rem;
-  color: #000000;
-}
-
-.card:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 1.5em 1.5em rgba(0, 0, 0, 0.582);
+  box-shadow: 0 0.5em 0.5em #000;
   background-color: #8de8ff;
 }
 
@@ -387,7 +353,7 @@ body.admin-1 {
 .table,
 .table th,
 .table td {
-  border: 0.2em solid black;
+  border: 0.2em solid #000;
   font-weight: bold;
 }
 
