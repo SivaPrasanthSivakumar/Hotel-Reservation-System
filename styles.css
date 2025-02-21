@@ -1,11 +1,14 @@
 .navbar {
-  box-shadow: 0 1.5em 1.5em rgba(252, 255, 79, 0.884);
+  box-shadow: 0 0.5em 0.5em rgba(252, 255, 79, 0.884);
   background-color: #2980b9;
   margin-bottom: 2vh;
 }
 
 .navbar-nav .nav-link:hover,
 .nav-link:hover {
+  transform: scale(1.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: #000 0 0.5em 0.5em;
   color: #e74c3c;
 }
 
@@ -20,6 +23,11 @@
 .navbar-brand {
   font-size: 1.5rem;
   font-weight: bold;
+}
+.navbar-brand:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: #000 0 0.5em 0.5em;
 }
 
 .border-button {
@@ -191,7 +199,7 @@ body.admin {
   margin: auto;
   margin-top: 3rem;
   max-width: 50%;
-  box-shadow: 1em 1em 1em rgb(19, 204, 255);
+  box-shadow: 0 1em 1em rgb(0, 200, 255);
   border-radius: 3em;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   padding-top: 1vh;
