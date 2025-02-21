@@ -151,7 +151,7 @@ function displayAdminPage() {
         <?php displayNavbar(); ?>
         <p><b>Here's some music to keep you company while you work</b></p>
         <audio controls autoplay loop>
-            <source src="background-music-instrumental-207886.mp3" type="audio/mpeg">
+            <source src="inspiring-piano-music-293598.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
         </audio> 
         <p>
