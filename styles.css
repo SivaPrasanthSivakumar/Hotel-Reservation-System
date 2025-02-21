@@ -4,6 +4,7 @@
 }
 
 .navbar:hover {
+
   box-shadow: 0 0.5em 0.5em rgba(252, 255, 79, 0.884);
 }
 
@@ -49,12 +50,13 @@
 .btn-primary {
   background-color: #3498db;
   border-color: #3498db;
-  animation: bounce 10s infinite;
 }
 
 .btn-primary:hover {
-  background-color: #2980b9;
-  border-color: #1c6ea4;
+  transform: scale(1.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0.8em 0.8em rgba(0, 0, 0, 0.1);
+  color: #000000;
 }
 
 .btn-danger,
@@ -63,8 +65,7 @@
   transition: background-color 0.3s, transform 0.3s;
 }
 
-.btn-danger:hover,
-.btn-primary:hover {
+.btn-danger:hover {
   transform: scale(1.3);
   transition: transform 0.3s, box-shadow 0.3s;
   box-shadow: #000 0 0.5em 0.5em;
@@ -191,6 +192,7 @@ body.admin {
   background-repeat: no-repeat;
   color: #2c3e50;
   font-family: "Arial", sans-serif;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .container {
@@ -280,7 +282,21 @@ body.admin {
   padding-bottom: 1vh;
   padding-left: 1vh;
   padding-right: 1vh;
-  background-color: #2bff00c7;
+  background-color: #adffc7eb;
+  box-shadow: 0 0.1em 0.1em rgb(0, 0, 0);
+}
+
+.card-admin {
+  border: none;
+  border-radius: 1em;
+  padding: 1vh;
+  background-color: #ffffff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-admin:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0.5em 0.5em rgba(0, 0, 0, 0.5);
 }
 
 .card:hover {
