@@ -30,7 +30,7 @@ function handlePostRequest($pdo) {
         exit;
     }
 
-    $costDetails = calculateCost($inputs['num_rooms'], $inputs['num_children'], $inputs['check_in'], $inputs['check_out']);
+    $costDetails = calculateCost($pdo, $rooms, $inputs['num_children'], $inputs['check_in'], $inputs['check_out']);
     $confirmation_number = uniqid("CONF-");
 
     saveReservation($pdo, $inputs, $rooms, $costDetails['total_cost'], $confirmation_number);
@@ -70,14 +70,14 @@ function validateInputs($inputs) {
         exit;
     }
 
-    if ($inputs['num_rooms'] <= 0 || $inputs['num_adults'] <= 0) {
-        echo json_encode(["error" => "Number of rooms and adults must be at least 1."]);
+    if ($inputs['num_adults'] <= 0) {
+        echo json_encode(["error" => "Number of adults must be at least 1."]);
         exit;
     }
 }
 
 function checkRoomAvailability($pdo, $num_rooms) {
-    $stmt = $pdo->query("SELECT room_number FROM rooms WHERE status = 'available' LIMIT $num_rooms");
+    $stmt = $pdo->query("SELECT room_type FROM rooms WHERE status = 'available' LIMIT $num_rooms");
     $rooms = $stmt->fetchAll(PDO::FETCH_COLUMN);
     if (count($rooms) < $num_rooms) {
         echo json_encode(["error" => "Not enough available rooms."]);
@@ -88,10 +88,10 @@ function checkRoomAvailability($pdo, $num_rooms) {
 
 function checkRoomReservations($pdo, $rooms, $check_in, $check_out) {
     foreach ($rooms as $room) {
-        $stmt = $pdo->prepare("SELECT * FROM reservations WHERE room_number = :room_number AND 
+        $stmt = $pdo->prepare("SELECT * FROM reservations WHERE room_type = :room_type AND 
                                ((:check_in BETWEEN check_in_date AND check_out_date) OR 
                                 (:check_out BETWEEN check_in_date AND check_out_date))");
-        $stmt->execute([':room_number' => $room, ':check_in' => $check_in, ':check_out' => $check_out]);
+        $stmt->execute([':room_type' => $room, ':check_in' => $check_in, ':check_out' => $check_out]);
         if ($stmt->rowCount() > 0) {
             echo json_encode(["error" => "Room $room is already reserved for the selected dates."]);
             exit;
@@ -99,15 +99,20 @@ function checkRoomReservations($pdo, $rooms, $check_in, $check_out) {
     }
 }
 
-function calculateCost($num_rooms, $num_children, $check_in, $check_out) {
+function calculateCost($pdo, $rooms, $num_children, $check_in, $check_out) {
     $num_nights = (strtotime($check_out) - strtotime($check_in)) / (60 * 60 * 24);
-    $price_per_night = 100.00;
-    $child_discount = ($num_children * $price_per_night * 0.05);
-    $total_cost = ($num_rooms * $price_per_night * $num_nights);
-    $final_cost = $total_cost - $child_discount;
-    if ($final_cost < 0) {
-        $final_cost = 0;
+    $total_cost = 0;
+
+    foreach ($rooms as $room) {
+        $stmt = $pdo->prepare("SELECT price_per_night FROM rooms WHERE room_type = :room_type");
+        $stmt->execute([':room_type' => $room]);
+        $price_per_night = $stmt->fetchColumn();
+        $total_cost += $price_per_night * $num_nights;
     }
+
+    $child_discount = min($num_children * $price_per_night * 0.05, $total_cost);
+    $final_cost = $total_cost - $child_discount;
+
     return [
         'total_cost' => $total_cost,
         'child_discount' => $child_discount,
@@ -117,9 +122,9 @@ function calculateCost($num_rooms, $num_children, $check_in, $check_out) {
 
 function saveReservation($pdo, $inputs, $rooms, $total_cost, $confirmation_number) {
     $sql = "INSERT INTO reservations 
-            (check_in_date, check_out_date, number_of_rooms, number_of_adults, number_of_children, room_number, total_cost, confirmation_number, guest_name, guest_phone) 
+            (check_in_date, check_out_date, number_of_rooms, number_of_adults, number_of_children, room_type, total_cost, confirmation_number, guest_name, guest_phone) 
             VALUES 
-            (:check_in, :check_out, :num_rooms, :num_adults, :num_children, :room_number, :total_cost, :confirmation_number, :guest_name, :guest_phone)";
+            (:check_in, :check_out, :num_rooms, :num_adults, :num_children, :room_type, :total_cost, :confirmation_number, :guest_name, :guest_phone)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
         ":check_in" => $inputs['check_in'],
@@ -127,7 +132,7 @@ function saveReservation($pdo, $inputs, $rooms, $total_cost, $confirmation_numbe
         ":num_rooms" => $inputs['num_rooms'],
         ":num_adults" => $inputs['num_adults'],
         ":num_children" => $inputs['num_children'],
-        ":room_number" => substr(implode(", ", $rooms), 0, 10),
+        ":room_type" => substr(implode(", ", $rooms), 0, 10),
         ":total_cost" => $total_cost,
         ":confirmation_number" => $confirmation_number,
         ":guest_name" => $inputs['guest_name'],
@@ -137,8 +142,8 @@ function saveReservation($pdo, $inputs, $rooms, $total_cost, $confirmation_numbe
 
 function updateRoomStatus($pdo, $rooms) {
     foreach ($rooms as $room) {
-        $stmt = $pdo->prepare("UPDATE rooms SET status = 'reserved' WHERE room_number = :room_number");
-        $stmt->execute([':room_number' => $room]);
+        $stmt = $pdo->prepare("UPDATE rooms SET status = 'reserved' WHERE room_type = :room_type");
+        $stmt->execute([':room_type' => $room]);
     }
 }
 ?>

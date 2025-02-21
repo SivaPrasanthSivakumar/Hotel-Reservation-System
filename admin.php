@@ -69,8 +69,8 @@ function getRooms() {
 
 function updateRoom($roomId, $roomData) {
     $pdo = getDatabaseConnection();
-    $stmt = $pdo->prepare("UPDATE rooms SET price_per_night = ?, status = ? WHERE room_number = ?");
-    $stmt->execute([$roomData['price_per_night'], $roomData['status'], $roomId]);
+    $stmt = $pdo->prepare("UPDATE rooms SET room_type = ?, price_per_night = ?, status = ? WHERE room_type = ?");
+    $stmt->execute([$roomData['new_room_type'], $roomData['price_per_night'], $roomData['status'], $roomId]);
 }
 
 function handleAdminActions() {
@@ -78,7 +78,7 @@ function handleAdminActions() {
         if (isset($_POST['cancel_reservation'])) {
             cancelReservation($_POST['reservation_id']);
         } elseif (isset($_POST['update_room'])) {
-            updateRoom($_POST['room_number'], $_POST);
+            updateRoom($_POST['room_type'], $_POST);
         }
     }
 }
@@ -91,7 +91,7 @@ function handleAjaxRequests() {
                 echo "<tr>
                         <td>{$reservation['id']}</td>
                         <td>{$reservation['guest_name']}</td>
-                        <td>{$reservation['room_number']}</td>
+                        <td>{$reservation['room_type']}</td>
                         <td>{$reservation['check_in_date']}</td>
                         <td>{$reservation['check_out_date']}</td>
                         <td>
@@ -107,12 +107,12 @@ function handleAjaxRequests() {
             $rooms = getRooms();
             foreach ($rooms as $room) {
                 echo "<tr>
-                        <td>{$room['room_number']}</td>
+                        <td>{$room['room_type']}</td>
                         <td>{$room['price_per_night']}</td>
                         <td>{$room['status']}</td>
                         <td>
                             <form class='update-room-form' method='POST'>
-                                <input type='hidden' name='room_number' value='{$room['room_number']}'>
+                                <input type='hidden' name='room_type' value='{$room['room_type']}'>
                                 <input type='number' name='price_per_night' value='{$room['price_per_night']}' required>
                                 <select name='status' required>
                                     <option value='available' " . ($room['status'] === 'available' ? 'selected' : '') . ">Available</option>
@@ -225,7 +225,7 @@ function displayReservationsManagement() {
                 <tr>
                     <td><?= $reservation['id'] ?></td>
                     <td><?= $reservation['guest_name'] ?></td>
-                    <td><?= $reservation['room_number'] ?></td>
+                    <td><?= $reservation['room_type'] ?></td>
                     <td><?= $reservation['check_in_date'] ?></td>
                     <td><?= $reservation['check_out_date'] ?></td>
                     <td>
@@ -248,21 +248,22 @@ function displayRoomManagement() {
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Room Number</th>
+                <th>Room Type</th>
                 <th>Price per Night</th>
                 <th>Status</th>
-                <th>Action</th>
+                <th>Change: Room Type and Price</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($rooms as $room): ?>
                 <tr>
-                    <td><?= $room['room_number'] ?></td>
+                    <td><?= $room['room_type'] ?></td>
                     <td><?= $room['price_per_night'] ?></td>
                     <td><?= $room['status'] ?></td>
                     <td>
                         <form method="POST">
-                            <input type="hidden" name="room_number" value="<?= $room['room_number'] ?>">
+                            <input type="hidden" name="room_type" value="<?= $room['room_type'] ?>">
+                            <input type="text" name="new_room_type" value="<?= $room['room_type'] ?>" required>
                             <input type="number" name="price_per_night" value="<?= $room['price_per_night'] ?>" required>
                             <select name="status" required>
                                 <option value="available" <?= $room['status'] === 'available' ? 'selected' : '' ?>>Available</option>

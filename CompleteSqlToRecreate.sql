@@ -8,30 +8,31 @@ CREATE TABLE reservations (
   number_of_rooms INT NOT NULL,
   number_of_adults INT NOT NULL,
   number_of_children INT DEFAULT 0,
-  room_number VARCHAR(10) NOT NULL,
+  room_type VARCHAR(500) NOT NULL,
   total_cost DECIMAL(10,2) NOT NULL,
   confirmation_number VARCHAR(50) NOT NULL,
   guest_name VARCHAR(100) NOT NULL,
   guest_phone VARCHAR(20) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 CREATE TABLE rooms (
-    room_number VARCHAR(10) PRIMARY KEY,
+    room_type VARCHAR(50) PRIMARY KEY,
     price_per_night DECIMAL(10,2) NOT NULL,
     status ENUM('available', 'reserved') DEFAULT 'available'
 );
 
-INSERT INTO rooms (room_number, price_per_night, status) VALUES
-('Room1', 100.00, 'available'),
-('Room2', 100.00, 'available'),
-('Room3', 100.00, 'available'),
-('Room4', 100.00, 'available'),
-('Room5', 100.00, 'available'),
-('Room6', 100.00, 'available'),
-('Room7', 100.00, 'available'),
-('Room8', 100.00, 'available'),
-('Room9', 100.00, 'available'),
-('Room10', 100.00, 'available');
+INSERT INTO rooms (room_type, price_per_night, status) VALUES
+('Economy Room 1', 50.00, 'available'),
+('Economy Room 2', 50.00, 'available'),
+('Economy Room 3', 50.00, 'available'),
+('Economy Room 4', 50.00, 'available'),
+('Regular Room 5', 100.00, 'available'),
+('Regular Room 6', 100.00, 'available'),
+('Regular Room 7', 100.00, 'available'),
+('Luxury Room 8', 1000.00, 'available'),
+('Luxury Room 9', 1000.00, 'available'),
+('Luxury Room 10', 1000.00, 'available');
 
 CREATE USER 'customer_user'@'localhost' IDENTIFIED BY 'passwordCUSto#33';
 GRANT SELECT, INSERT, UPDATE ON hotel_db.reservations TO 'customer_user'@'localhost';
