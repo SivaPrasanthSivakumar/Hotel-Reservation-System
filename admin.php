@@ -20,9 +20,13 @@ function authenticateAdmin($username, $password) {
 }
 
 function handleLogin() {
+    if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in']) {
+        return;
+    }
+
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        $admin_user = $_POST["username"];
-        $admin_pass = $_POST["password"];
+        $admin_user = isset($_POST["username"]) ? $_POST["username"] : '';
+        $admin_pass = isset($_POST["password"]) ? $_POST["password"] : '';
 
         if (authenticateAdmin($admin_user, $admin_pass)) {
             $_SESSION['admin_logged_in'] = true;
@@ -166,6 +170,7 @@ function displayLoginForm() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Admin Login</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="styles.css" />
     </head>
     <body class="admin">
         <div class="container mt-5">
@@ -208,7 +213,13 @@ function displayNavbar() {
 function displayReservationsManagement() {
     $reservations = getReservations();
     ?>
+    <style>
+        table,th,td{
+        border: 3px solid black;}
+    </style>
+    <div class="card-3 mt-3">
     <h2>Reservations Management</h2>
+    <div class="card-4 mb-4">
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -238,13 +249,18 @@ function displayReservationsManagement() {
             <?php endforeach; ?>
         </tbody>
     </table>
+    </div>
+    </div>
+    <p></p>
     <?php
 }
 
 function displayRoomManagement() {
     $rooms = getRooms();
     ?>
+    <div class="card-3 mt-3">
     <h2>Room Management</h2>
+    <div class="card-4 mb-4">
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -276,6 +292,8 @@ function displayRoomManagement() {
             <?php endforeach; ?>
         </tbody>
     </table>
+    </div>
+    </div>
     <?php
 }
 

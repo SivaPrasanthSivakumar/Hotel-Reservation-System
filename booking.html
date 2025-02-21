@@ -101,16 +101,16 @@
                   name="room_selection"
                   required
                 >
-                  <option value="1">Room 1 (Economy $50)</option>
-                  <option value="2">Room 2 (Economy $50)</option>
-                  <option value="3">Room 3 (Economy $50)</option>
-                  <option value="4">Room 4 (Economy $50)</option>
-                  <option value="5">Room 5 (Regular $100)</option>
-                  <option value="6">Room 6 (Regular $100)</option>
-                  <option value="7">Room 7 (Regular $100)</option>
-                  <option value="8">Room 8 (Luxury $1000)</option>
-                  <option value="9">Room 9 (Luxury $1000)</option>
-                  <option value="10">Room 10 (Luxury $1000)</option>
+                  <option value="Economy Room 1">Room 1 (Economy $50)</option>
+                  <option value="Economy Room 2">Room 2 (Economy $50)</option>
+                  <option value="Economy Room 3">Room 3 (Economy $50)</option>
+                  <option value="Economy Room 4">Room 4 (Economy $50)</option>
+                  <option value="Regular Room 5">Room 5 (Regular $100)</option>
+                  <option value="Regular Room 6">Room 6 (Regular $100)</option>
+                  <option value="Regular Room 7">Room 7 (Regular $100)</option>
+                  <option value="Luxury Room 8">Room 8 (Luxury $1000)</option>
+                  <option value="Luxury Room 9">Room 9 (Luxury $1000)</option>
+                  <option value="Luxury Room 10">Room 10 (Luxury $1000)</option>
                 </select>
               </div>
               <div class="form-group col-md-6">
@@ -165,6 +165,7 @@
                 </small>
               </div>
             </div>
+            <input type="hidden" id="num_rooms" name="num_rooms" value="1" />
             <button
               type="button"
               class="btn btn-primary btn-block"
@@ -220,6 +221,10 @@
           const form = document.getElementById("booking-form");
           const formData = new FormData(form);
           formData.append("check_availability", "1");
+          formData.append(
+            "room_selection",
+            document.getElementById("room-selection").value
+          );
           fetch("reservation.php", {
             method: "POST",
             body: formData,
@@ -232,6 +237,10 @@
         function bookNow() {
           const form = document.getElementById("booking-form");
           const formData = new FormData(form);
+          formData.append(
+            "room_selection",
+            document.getElementById("room-selection").value
+          );
           fetch("reservation.php", {
             method: "POST",
             body: formData,

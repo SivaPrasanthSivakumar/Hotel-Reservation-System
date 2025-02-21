@@ -22,7 +22,7 @@ try {
 function handlePostRequest($pdo) {
     $inputs = getUserInputs();
     validateInputs($inputs);
-    $rooms = checkRoomAvailability($pdo, $inputs['num_rooms']);
+    $rooms = checkRoomAvailability($pdo, $inputs['room_selection']);
     checkRoomReservations($pdo, $rooms, $inputs['check_in'], $inputs['check_out']);
 
     if (isset($_POST['check_availability'])) {
@@ -55,7 +55,8 @@ function getUserInputs() {
         'num_adults' => (int)($_POST["num_adults"] ?? 0),
         'num_children' => (int)($_POST["num_children"] ?? 0),
         'guest_name' => trim($_POST["guest_name"] ?? ''),
-        'guest_phone' => trim($_POST["guest_phone"] ?? '')
+        'guest_phone' => trim($_POST["guest_phone"] ?? ''),
+        'room_selection' => $_POST["room_selection"] ?? ''
     ];
 }
 
@@ -76,11 +77,12 @@ function validateInputs($inputs) {
     }
 }
 
-function checkRoomAvailability($pdo, $num_rooms) {
-    $stmt = $pdo->query("SELECT room_type FROM rooms WHERE status = 'available' LIMIT $num_rooms");
+function checkRoomAvailability($pdo, $room_selection) {
+    $stmt = $pdo->prepare("SELECT room_type FROM rooms WHERE status = 'available' AND room_type = :room_type");
+    $stmt->execute([':room_type' => $room_selection]);
     $rooms = $stmt->fetchAll(PDO::FETCH_COLUMN);
-    if (count($rooms) < $num_rooms) {
-        echo json_encode(["error" => "Not enough available rooms."]);
+    if (count($rooms) < 1) {
+        echo json_encode(["error" => "Selected room is not available."]);
         exit;
     }
     return $rooms;
@@ -102,15 +104,16 @@ function checkRoomReservations($pdo, $rooms, $check_in, $check_out) {
 function calculateCost($pdo, $rooms, $num_children, $check_in, $check_out) {
     $num_nights = (strtotime($check_out) - strtotime($check_in)) / (60 * 60 * 24);
     $total_cost = 0;
+    $child_discount = 0;
 
     foreach ($rooms as $room) {
         $stmt = $pdo->prepare("SELECT price_per_night FROM rooms WHERE room_type = :room_type");
         $stmt->execute([':room_type' => $room]);
         $price_per_night = $stmt->fetchColumn();
         $total_cost += $price_per_night * $num_nights;
+        $child_discount += min($num_children * $price_per_night * 0.05, $price_per_night * $num_nights);
     }
 
-    $child_discount = min($num_children * $price_per_night * 0.05, $total_cost);
     $final_cost = $total_cost - $child_discount;
 
     return [
