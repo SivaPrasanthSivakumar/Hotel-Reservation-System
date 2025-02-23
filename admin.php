@@ -206,6 +206,11 @@ function displayLoginForm() {
             </ul>
         </div>
     </nav>
+    <p></p>
+    <p>:</p>
+        <audio controls autoplay loop src="background-music-instrumental-207886.mp3">
+      Your browser does not support the audio element.
+    </audio>
         <div class="card-2">
 
     <div class="container mt-5 pt-5">
