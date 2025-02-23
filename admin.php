@@ -133,10 +133,6 @@ function handleAjaxRequests() {
 }
 
 function displayAdminPage() {
-    if (!isset($_SESSION['admin_logged_in'])) {
-        displayLoginForm();
-        return;
-    }
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -149,6 +145,12 @@ function displayAdminPage() {
     </head>
     <body class="admin-1">
         <?php displayNavbar(); ?>
+        <?php
+        if (!isset($_SESSION['admin_logged_in'])) {
+            displayLoginForm();
+            return;
+        }
+        ?>
         <p><b>Here's some music to keep you company while you work</b></p>
         <audio controls autoplay loop>
             <source src="inspiring-piano-music-293598.mp3" type="audio/mpeg">
@@ -179,20 +181,54 @@ function displayLoginForm() {
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body class="admin">
-        <div class="container mt-5">
-            <h2 class="text-center">Admin Login</h2>
-            <form method="POST" action="admin.php">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" required />
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" required />
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">Login</button>
-            </form>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="index.html">Hotel Siva Prasanth Sivakumar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="booking.html">Booking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="attractions.html">Attractions</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="admin.html">Staff/Admin Page</a>
+                </li>
+            </ul>
         </div>
+    </nav>
+        <div class="card-2">
+
+    <div class="container mt-5 pt-5">
+        <h2 class="text-center">Admin Login</h2>
+                <div class="card-1 mb-4">
+
+        <form method="POST" action="admin.php">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+        <?php if ($_SERVER["REQUEST_METHOD"] === "POST" && !authenticateAdmin($_POST["username"], $_POST["password"])): ?>
+            <p class="text-danger text-center mt-3">Invalid login credentials. Please try again.</p>
+        <?php endif; ?>
+    </div>
+    </div>
+    </div>
     </body>
     </html>
     <?php
